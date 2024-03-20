@@ -1,10 +1,12 @@
 package com.ruoyi.xljk.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.xljk.domain.SysFileInfo;
+import com.ruoyi.xljk.domain.nameVo;
 import com.ruoyi.xljk.service.ISysFileInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,15 +49,26 @@ public class QuestionAnswerController extends BaseController
     @GetMapping("/name")
     public AjaxResult namelist()
     {
-        HashMap<String, List> hashMap = new HashMap<>();
 
+        ArrayList<nameVo> list2 = new ArrayList<>();
         SysFileInfo sysFileInfo = new SysFileInfo();
+
 
         List<SysFileInfo> list1 = sysFileInfoService.selectSysFileInfoList(sysFileInfo);
         List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerNameList();
-        hashMap.put("photo",list1);
-        hashMap.put("QuestionAnswer",list);
-        return success(hashMap);
+        for (QuestionAnswer s: list) {
+            nameVo nameVo = new nameVo();
+            nameVo.setQuestionId(s.getQuestionId());
+            nameVo.setQuestionType(s.getQuestionType());
+            list2.add(nameVo);
+        }
+        for (SysFileInfo s: list1) {
+            nameVo nameVo = new nameVo();
+            nameVo.setFilePath(s.getFilePath());
+            list2.add(nameVo);
+        }
+
+        return success(list2);
     }
     /**
      * 查询【请填写功能名称】列表
