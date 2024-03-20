@@ -54,7 +54,7 @@ public class QuestionAnswerController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(QuestionAnswer questionAnswer)
     {
-        startPage();
+//        startPage();
         List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerList(questionAnswer);
         return getDataTable(list);
     }
