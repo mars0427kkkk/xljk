@@ -1,8 +1,11 @@
 package com.ruoyi.xljk.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.xljk.domain.SysFileInfo;
+import com.ruoyi.xljk.service.ISysFileInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,14 +40,22 @@ public class QuestionAnswerController extends BaseController
 {
     @Autowired
     private IQuestionAnswerService questionAnswerService;
+    @Autowired
+    private ISysFileInfoService sysFileInfoService;
 
    @ApiOperation("名字、题目数查询")
     @GetMapping("/name")
     public AjaxResult namelist()
     {
+        HashMap<String, List> hashMap = new HashMap<>();
 
+        SysFileInfo sysFileInfo = new SysFileInfo();
+
+        List<SysFileInfo> list1 = sysFileInfoService.selectSysFileInfoList(sysFileInfo);
         List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerNameList();
-        return success(list);
+        hashMap.put("photo",list1);
+        hashMap.put("QuestionAnswer",list);
+        return success(hashMap);
     }
     /**
      * 查询【请填写功能名称】列表
@@ -55,7 +66,9 @@ public class QuestionAnswerController extends BaseController
     public TableDataInfo list(QuestionAnswer questionAnswer)
     {
 //        startPage();
+
         List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerList(questionAnswer);
+
         return getDataTable(list);
     }
 
