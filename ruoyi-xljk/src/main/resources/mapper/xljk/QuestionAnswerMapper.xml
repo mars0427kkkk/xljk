@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xljk.mapper.QuestionAnswerMapper">
+    
+    <resultMap type="QuestionAnswer" id="QuestionAnswerResult">
+        <result property="id"    column="id"    />
+        <result property="questionId"    column="question_id"    />
+        <result property="questionContent"    column="question_content"    />
+        <result property="answerId"    column="answer_id"    />
+        <result property="answerContent"    column="answer_content"    />
+        <result property="answerScore"    column="answer_score"    />
+        <result property="questionTypeId"    column="question_type_id"    />
+        <result property="questionType"    column="question_type"    />
+        <result property="type"    column="type"    />
+    </resultMap>
+
+    <resultMap type="QuestionAnswer" id="QuestionAnswerNameResult">
+        <result property="questionId"    column="number"    />
+
+        <result property="questionType"    column="question_type"    />
+
+    </resultMap>
+
+    <sql id="selectQuestionAnswerVo">
+        select id, question_id, question_content, answer_id, answer_content, answer_score, question_type_id, question_type, type from question_answer
+    </sql>
+
+    <select id="selectQuestionAnswerList" parameterType="QuestionAnswer" resultMap="QuestionAnswerResult">
+        <include refid="selectQuestionAnswerVo"/>
+        <where>  
+            <if test="questionId != null "> and question_id = #{questionId}</if>
+            <if test="questionContent != null  and questionContent != ''"> and question_content = #{questionContent}</if>
+            <if test="answerId != null  and answerId != ''"> and answer_id = #{answerId}</if>
+            <if test="answerContent != null  and answerContent != ''"> and answer_content = #{answerContent}</if>
+            <if test="answerScore != null "> and answer_score = #{answerScore}</if>
+            <if test="questionTypeId != null "> and question_type_id = #{questionTypeId}</if>
+            <if test="questionType != null  and questionType != ''"> and question_type = #{questionType}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+        </where>
+    </select>
+    
+    <select id="selectQuestionAnswerById" parameterType="Long" resultMap="QuestionAnswerResult">
+        <include refid="selectQuestionAnswerVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectQuestionAnswerNameList" resultMap="QuestionAnswerNameResult">
+        SELECT MAX(question_id) AS number,question_type FROM question_answer GROUP BY question_type;
+    </select>
+
+    <insert id="insertQuestionAnswer" parameterType="QuestionAnswer" useGeneratedKeys="true" keyProperty="id">
+        insert into question_answer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionId != null">question_id,</if>
+            <if test="questionContent != null">question_content,</if>
+            <if test="answerId != null">answer_id,</if>
+            <if test="answerContent != null">answer_content,</if>
+            <if test="answerScore != null">answer_score,</if>
+            <if test="questionTypeId != null">question_type_id,</if>
+            <if test="questionType != null">question_type,</if>
+            <if test="type != null">type,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionId != null">#{questionId},</if>
+            <if test="questionContent != null">#{questionContent},</if>
+            <if test="answerId != null">#{answerId},</if>
+            <if test="answerContent != null">#{answerContent},</if>
+            <if test="answerScore != null">#{answerScore},</if>
+            <if test="questionTypeId != null">#{questionTypeId},</if>
+            <if test="questionType != null">#{questionType},</if>
+            <if test="type != null">#{type},</if>
+         </trim>
+    </insert>
+
+    <update id="updateQuestionAnswer" parameterType="QuestionAnswer">
+        update question_answer
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="questionId != null">question_id = #{questionId},</if>
+            <if test="questionContent != null">question_content = #{questionContent},</if>
+            <if test="answerId != null">answer_id = #{answerId},</if>
+            <if test="answerContent != null">answer_content = #{answerContent},</if>
+            <if test="answerScore != null">answer_score = #{answerScore},</if>
+            <if test="questionTypeId != null">question_type_id = #{questionTypeId},</if>
+            <if test="questionType != null">question_type = #{questionType},</if>
+            <if test="type != null">type = #{type},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteQuestionAnswerById" parameterType="Long">
+        delete from question_answer where id = #{id}
+    </delete>
+
+    <delete id="deleteQuestionAnswerByIds" parameterType="String">
+        delete from question_answer where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
