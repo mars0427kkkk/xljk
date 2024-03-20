@@ -122,7 +122,7 @@ public class SysLoginService
         SysUser wxUser = userService.selectWxUserByOpenId(openId);
         //假如查不到，则新增，查到了，则更新
         String nickNameStr = StringUtils.isEmpty(nickName) ? getStringRandom(8) : nickName;
-        String avatarUrlStr = StringUtils.isEmpty(avatarUrl) ? "/profile/avatar/2023/05/30/blob_20230530184944A001.png" : avatarUrl;
+        String avatarUrlStr = StringUtils.isEmpty(avatarUrl) ? "/profile/upload/2024/03/20/学生测评_20240320173259A001.png" : avatarUrl;
         SysUser user = new SysUser();
         if (ObjectUtils.isEmpty(wxUser)) {
             // 新增
