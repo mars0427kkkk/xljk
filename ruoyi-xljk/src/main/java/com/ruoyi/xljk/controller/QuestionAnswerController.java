@@ -60,10 +60,6 @@ public class QuestionAnswerController extends BaseController
             nameVo nameVo = new nameVo();
             nameVo.setQuestionId(s.getQuestionId());
             nameVo.setQuestionType(s.getQuestionType());
-            list2.add(nameVo);
-        }
-        for (SysFileInfo s: list1) {
-            nameVo nameVo = new nameVo();
             nameVo.setFilePath(s.getFilePath());
             list2.add(nameVo);
         }

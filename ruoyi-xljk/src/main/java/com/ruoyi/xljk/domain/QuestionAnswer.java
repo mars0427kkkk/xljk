@@ -47,6 +47,8 @@ public class QuestionAnswer extends BaseEntity
     /** 题目种类 */
     @Excel(name = "题目种类")
     private String questionType;
+    @Excel(name = "文件路径")
+    private String filePath;
 
     /** 题目解析种类 */
     @Excel(name = "题目解析种类")
@@ -133,7 +135,15 @@ public class QuestionAnswer extends BaseEntity
     {
         return type;
     }
+    public void setFilePath(String filePath)
+    {
+        this.filePath = filePath;
+    }
 
+    public String getFilePath()
+    {
+        return filePath;
+    }
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -146,6 +156,7 @@ public class QuestionAnswer extends BaseEntity
             .append("questionTypeId", getQuestionTypeId())
             .append("questionType", getQuestionType())
             .append("type", getType())
+            .append("filePath", getFilePath())
             .toString();
     }
 }
