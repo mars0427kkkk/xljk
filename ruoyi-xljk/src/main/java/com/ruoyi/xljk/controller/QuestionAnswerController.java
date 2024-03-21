@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.xljk.domain.SysFileInfo;
+import com.ruoyi.xljk.domain.correctionalMode;
 import com.ruoyi.xljk.domain.nameVo;
 import com.ruoyi.xljk.service.ISysFileInfoService;
 import io.swagger.annotations.Api;
@@ -44,6 +45,25 @@ public class QuestionAnswerController extends BaseController
     private IQuestionAnswerService questionAnswerService;
     @Autowired
     private ISysFileInfoService sysFileInfoService;
+
+    @ApiOperation("教养模式")
+    @GetMapping("/home")
+    public AjaxResult homelist(correctionalMode correctionalMode){
+        List<String> list = new ArrayList<>();
+        if (correctionalMode.getAuthoritativeDemocracy() >= 2){
+            list.add("权威民主");
+        }
+        if (correctionalMode.getStrongControl() >= 2){
+            list.add("强势控制");
+        }
+        if (correctionalMode.getDrowningIndulgence() >= 2){
+            list.add("溺爱放纵");
+        }
+        if (correctionalMode.getIngnoringIndifference() >= 2){
+            list.add("忽视淡漠");
+        }
+        return success(list);
+    }
 
    @ApiOperation("名字、题目数查询")
     @GetMapping("/name")
