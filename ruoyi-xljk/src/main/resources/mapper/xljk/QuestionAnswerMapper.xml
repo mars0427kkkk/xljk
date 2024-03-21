@@ -46,8 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectQuestionAnswerVo"/>
         where id = #{id}
     </select>
-    <select id="selectQuestionAnswerNameList" resultMap="QuestionAnswerNameResult">
-        SELECT MAX(question_id) AS number,question_type,file_path FROM question_answer GROUP BY question_type;
+    <select id="selectQuestionAnswerNameList" parameterType="String" resultMap="QuestionAnswerNameResult">
+        SELECT MAX(question_id) AS number,question_type,file_path FROM question_answer
+        <where>
+        <if test="type != null  and type != ''"> and type = #{type}</if>
+    </where> GROUP BY question_type;
     </select>
 
     <insert id="insertQuestionAnswer" parameterType="QuestionAnswer" useGeneratedKeys="true" keyProperty="id">

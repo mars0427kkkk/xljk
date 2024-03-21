@@ -59,5 +59,5 @@ public interface IQuestionAnswerService
      */
     public int deleteQuestionAnswerById(Long id);
 
-    List<QuestionAnswer> selectQuestionAnswerNameList();
+    List<QuestionAnswer> selectQuestionAnswerNameList(String type);
 }

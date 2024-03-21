@@ -59,5 +59,5 @@ public interface QuestionAnswerMapper
      */
     public int deleteQuestionAnswerByIds(Long[] ids);
 
-    List<QuestionAnswer> selectQuestionAnswerNameList();
+    List<QuestionAnswer> selectQuestionAnswerNameList(String type);
 }

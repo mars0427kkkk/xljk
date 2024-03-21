@@ -156,15 +156,14 @@ public class QuestionAnswerController extends BaseController
     }
    @ApiOperation("名字、题目数查询")
     @GetMapping("/name")
-    public AjaxResult namelist()
+    public AjaxResult namelist(String type)
     {
 
         ArrayList<nameVo> list2 = new ArrayList<>();
-        SysFileInfo sysFileInfo = new SysFileInfo();
 
 
-        List<SysFileInfo> list1 = sysFileInfoService.selectSysFileInfoList(sysFileInfo);
-        List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerNameList();
+
+        List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerNameList(type);
         for (QuestionAnswer s: list) {
             nameVo nameVo = new nameVo();
             nameVo.setQuestionId(s.getQuestionId());

@@ -92,7 +92,7 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService
     }
 
     @Override
-    public List<QuestionAnswer> selectQuestionAnswerNameList() {
-        return questionAnswerMapper.selectQuestionAnswerNameList();
+    public List<QuestionAnswer> selectQuestionAnswerNameList(String type) {
+        return questionAnswerMapper.selectQuestionAnswerNameList(type);
     }
 }
