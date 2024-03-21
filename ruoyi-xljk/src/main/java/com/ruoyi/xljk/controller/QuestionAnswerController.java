@@ -64,10 +64,10 @@ public class QuestionAnswerController extends BaseController
         Long ingnoringIndifference = correctionalMode.getIngnoringIndifference();
 
 
-        HashMap.put("权威民主",authoritativeDemocracy);
-        HashMap.put("强势控制",strongControl);
-        HashMap.put("溺爱放纵",drowningIndulgence);
-        HashMap.put("忽视淡漠",ingnoringIndifference);
+        HashMap.put("权威民主，权威民主型的家庭被认为是智慧型父母和理想家庭，他们能够尊重孩子的需要，及时给予孩子反馈。",authoritativeDemocracy);
+        HashMap.put("强势控制，强势控制型的父母对孩子通常要求很高，但是对孩子的需求却不敏感，常常不能关注到孩子的需求",strongControl);
+        HashMap.put("溺爱放纵，溺爱放纵型父母对孩子通常要求很低，但是对孩子的需求却是高度反应。",drowningIndulgence);
+        HashMap.put("忽视淡漠，忽视淡漠型家庭的父母对孩子通常要求很低甚至没要求，对孩子的需求也看不见。",ingnoringIndifference);
 
         long maxValue = Long.MIN_VALUE;
         String maxObjects = "";
