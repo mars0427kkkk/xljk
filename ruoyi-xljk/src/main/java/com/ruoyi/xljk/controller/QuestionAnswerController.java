@@ -12,6 +12,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.xljk.domain.SysFileInfo;
 import com.ruoyi.xljk.domain.correctionalMode;
 import com.ruoyi.xljk.domain.nameVo;
+import com.ruoyi.xljk.domain.positiveNature;
 import com.ruoyi.xljk.service.ISysFileInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -53,9 +54,9 @@ public class QuestionAnswerController extends BaseController
     @ApiOperation("教养模式")
     @GetMapping("/home")
     public AjaxResult homelist(correctionalMode correctionalMode){
-        List<String> list = new ArrayList<>();
-        List<Long> maxPolicies = new ArrayList<>();
+
         HashMap<String, Long> HashMap = new HashMap<>();
+        List<String> list = new ArrayList<>();
 
         Long authoritativeDemocracy = correctionalMode.getAuthoritativeDemocracy();
         Long strongControl = correctionalMode.getStrongControl();
@@ -76,14 +77,56 @@ public class QuestionAnswerController extends BaseController
             if (value > maxValue) {
                 maxValue = value;
                 maxObjects = entry.getKey();
+                list.clear();
+                list.add(maxObjects);
+
             } else if (value == maxValue) {
-                maxObjects += ", " + entry.getKey();
+
+                list.add(entry.getKey());
             }
         }
 
-        return success(maxObjects);
+        return success(list);
     }
 
+
+    @ApiOperation("积极天性")
+    @GetMapping("/posi")
+    public AjaxResult posilist(positiveNature positiveNature){
+
+        HashMap<String, Long> HashMap = new HashMap<>();
+        List<String> list = new ArrayList<>();
+
+        Long authoritativeDemocracy = positiveNature.getA();
+        Long strongControl = positiveNature.getB();
+        Long drowningIndulgence = positiveNature.getC();
+        Long ingnoringIndifference = positiveNature.getD();
+
+
+        HashMap.put("向日葵型",authoritativeDemocracy);
+        HashMap.put("玫瑰型",strongControl);
+        HashMap.put("仙人掌型",drowningIndulgence);
+        HashMap.put("含羞草型",ingnoringIndifference);
+
+        long maxValue = Long.MIN_VALUE;
+        String maxObjects = "";
+
+        for (Map.Entry<String, Long> entry : HashMap.entrySet()) {
+            long value = entry.getValue();
+            if (value > maxValue) {
+                maxValue = value;
+                maxObjects = entry.getKey();
+                list.clear();
+                list.add(maxObjects);
+
+            } else if (value == maxValue) {
+
+                list.add(entry.getKey());
+            }
+        }
+
+        return success(list);
+    }
    @ApiOperation("名字、题目数查询")
     @GetMapping("/name")
     public AjaxResult namelist()
