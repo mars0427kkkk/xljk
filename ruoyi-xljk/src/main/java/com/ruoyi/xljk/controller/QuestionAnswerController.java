@@ -109,7 +109,7 @@ public class QuestionAnswerController extends BaseController
     public AjaxResult posilist(positiveNature positiveNature){
 
         HashMap<String, Long> HashMap = new HashMap<>();
-        List<String> list = new ArrayList<>();
+        List<homeVo> list = new ArrayList<>();
 
         Long authoritativeDemocracy = positiveNature.getA();
         Long strongControl = positiveNature.getB();
@@ -117,10 +117,10 @@ public class QuestionAnswerController extends BaseController
         Long ingnoringIndifference = positiveNature.getD();
 
 
-        HashMap.put("向日葵型",authoritativeDemocracy);
-        HashMap.put("玫瑰型",strongControl);
-        HashMap.put("仙人掌型",drowningIndulgence);
-        HashMap.put("含羞草型",ingnoringIndifference);
+        HashMap.put("向日葵型:向日葵型孩子他们总能自然而然地从心底换发着活力和热情，通常他们是人群中那个快乐和乐趣的存在",authoritativeDemocracy);
+        HashMap.put("玫瑰型:玫瑰型的孩子给大家最直接的印象是“完美人设”。无论是在行为处事、外在形象还是内心情绪上，他们渴望永远做到完美、追求卓越。\n",strongControl);
+        HashMap.put("仙人掌型:仙人掌型的孩子不甘于平凡，永远精力充沛。他们是人类中的冒险家，会为了目标勇往直前。",drowningIndulgence);
+        HashMap.put("含羞草型:羞草类型的孩子给人的最大印象是安静害羞，又有着敏感细腻的觉察力，不需刻意就会捕捉到人与人之间的微妙的信息。",ingnoringIndifference);
 
         long maxValue = Long.MIN_VALUE;
         String maxObjects = "";
@@ -130,12 +130,25 @@ public class QuestionAnswerController extends BaseController
             if (value > maxValue) {
                 maxValue = value;
                 maxObjects = entry.getKey();
+                String[] split = maxObjects.split(":");
+                String s = split[0];
+                String s1 = split[1];
+                homeVo homeVo = new homeVo();
+                homeVo.setName(s);
+                homeVo.setType(s1);
                 list.clear();
-                list.add(maxObjects);
+                list.add(homeVo);
 
             } else if (value == maxValue) {
 
-                list.add(entry.getKey());
+                maxObjects = entry.getKey();
+                String[] split = maxObjects.split(":");
+                String s = split[0];
+                String s1 = split[1];
+                homeVo homeVo = new homeVo();
+                homeVo.setName(s);
+                homeVo.setType(s1);
+                list.add(homeVo);
             }
         }
 
