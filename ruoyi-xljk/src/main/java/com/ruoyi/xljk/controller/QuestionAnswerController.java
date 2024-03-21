@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.xljk.domain.SysFileInfo;
 import com.ruoyi.xljk.domain.correctionalMode;
+import com.ruoyi.xljk.domain.homeVo;
 import com.ruoyi.xljk.domain.nameVo;
 import com.ruoyi.xljk.domain.positiveNature;
 import com.ruoyi.xljk.service.ISysFileInfoService;
@@ -56,7 +57,7 @@ public class QuestionAnswerController extends BaseController
     public AjaxResult homelist(correctionalMode correctionalMode){
 
         HashMap<String, Long> HashMap = new HashMap<>();
-        List<String> list = new ArrayList<>();
+        List<homeVo> list = new ArrayList<>();
 
         Long authoritativeDemocracy = correctionalMode.getAuthoritativeDemocracy();
         Long strongControl = correctionalMode.getStrongControl();
@@ -64,10 +65,10 @@ public class QuestionAnswerController extends BaseController
         Long ingnoringIndifference = correctionalMode.getIngnoringIndifference();
 
 
-        HashMap.put("权威民主，权威民主型的家庭被认为是智慧型父母和理想家庭，他们能够尊重孩子的需要，及时给予孩子反馈。",authoritativeDemocracy);
-        HashMap.put("强势控制，强势控制型的父母对孩子通常要求很高，但是对孩子的需求却不敏感，常常不能关注到孩子的需求",strongControl);
-        HashMap.put("溺爱放纵，溺爱放纵型父母对孩子通常要求很低，但是对孩子的需求却是高度反应。",drowningIndulgence);
-        HashMap.put("忽视淡漠，忽视淡漠型家庭的父母对孩子通常要求很低甚至没要求，对孩子的需求也看不见。",ingnoringIndifference);
+        HashMap.put("权威民主:权威民主型的家庭被认为是智慧型父母和理想家庭，他们能够尊重孩子的需要，及时给予孩子反馈。",authoritativeDemocracy);
+        HashMap.put("强势控制:强势控制型的父母对孩子通常要求很高，但是对孩子的需求却不敏感，常常不能关注到孩子的需求",strongControl);
+        HashMap.put("溺爱放纵:溺爱放纵型父母对孩子通常要求很低，但是对孩子的需求却是高度反应。",drowningIndulgence);
+        HashMap.put("忽视淡漠:忽视淡漠型家庭的父母对孩子通常要求很低甚至没要求，对孩子的需求也看不见。",ingnoringIndifference);
 
         long maxValue = Long.MIN_VALUE;
         String maxObjects = "";
@@ -77,12 +78,25 @@ public class QuestionAnswerController extends BaseController
             if (value > maxValue) {
                 maxValue = value;
                 maxObjects = entry.getKey();
+                String[] split = maxObjects.split(":");
+                String s = split[0];
+                String s1 = split[1];
+                homeVo homeVo = new homeVo();
+                homeVo.setName(s);
+                homeVo.setType(s1);
                 list.clear();
-                list.add(maxObjects);
+                list.add(homeVo);
 
             } else if (value == maxValue) {
 
-                list.add(entry.getKey());
+                maxObjects = entry.getKey();
+                String[] split = maxObjects.split(":");
+                String s = split[0];
+                String s1 = split[1];
+                homeVo homeVo = new homeVo();
+                homeVo.setName(s);
+                homeVo.setType(s1);
+                list.add(homeVo);
             }
         }
 
