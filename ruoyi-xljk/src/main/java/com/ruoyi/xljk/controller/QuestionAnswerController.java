@@ -1,10 +1,14 @@
 package com.ruoyi.xljk.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.xljk.domain.SysFileInfo;
 import com.ruoyi.xljk.domain.correctionalMode;
 import com.ruoyi.xljk.domain.nameVo;
@@ -50,19 +54,34 @@ public class QuestionAnswerController extends BaseController
     @GetMapping("/home")
     public AjaxResult homelist(correctionalMode correctionalMode){
         List<String> list = new ArrayList<>();
-        if (correctionalMode.getAuthoritativeDemocracy() >= 2){
-            list.add("权威民主");
+        List<Long> maxPolicies = new ArrayList<>();
+        HashMap<String, Long> HashMap = new HashMap<>();
+
+        Long authoritativeDemocracy = correctionalMode.getAuthoritativeDemocracy();
+        Long strongControl = correctionalMode.getStrongControl();
+        Long drowningIndulgence = correctionalMode.getDrowningIndulgence();
+        Long ingnoringIndifference = correctionalMode.getIngnoringIndifference();
+
+
+        HashMap.put("权威民主",authoritativeDemocracy);
+        HashMap.put("强势控制",strongControl);
+        HashMap.put("溺爱放纵",drowningIndulgence);
+        HashMap.put("忽视淡漠",ingnoringIndifference);
+
+        long maxValue = Long.MIN_VALUE;
+        String maxObjects = "";
+
+        for (Map.Entry<String, Long> entry : HashMap.entrySet()) {
+            long value = entry.getValue();
+            if (value > maxValue) {
+                maxValue = value;
+                maxObjects = entry.getKey();
+            } else if (value == maxValue) {
+                maxObjects += ", " + entry.getKey();
+            }
         }
-        if (correctionalMode.getStrongControl() >= 2){
-            list.add("强势控制");
-        }
-        if (correctionalMode.getDrowningIndulgence() >= 2){
-            list.add("溺爱放纵");
-        }
-        if (correctionalMode.getIngnoringIndifference() >= 2){
-            list.add("忽视淡漠");
-        }
-        return success(list);
+
+        return success(maxObjects);
     }
 
    @ApiOperation("名字、题目数查询")
