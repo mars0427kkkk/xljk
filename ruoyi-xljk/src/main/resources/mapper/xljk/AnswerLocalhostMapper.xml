@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xljk.mapper.AnswerLocalhostMapper">
+    
+    <resultMap type="AnswerLocalhost" id="AnswerLocalhostResult">
+        <result property="id"    column="id"    />
+        <result property="testName"    column="test_name"    />
+        <result property="testTime"    column="test_time"    />
+        <result property="openid"    column="openid"    />
+        <result property="answer"    column="answer"    />
+        <result property="answerNum"    column="answer_num"    />
+    </resultMap>
+
+    <sql id="selectAnswerLocalhostVo">
+        select id, test_name, test_time, openid, answer, answer_num from answer_localhost
+    </sql>
+
+    <select id="selectAnswerLocalhostList" parameterType="AnswerLocalhost" resultMap="AnswerLocalhostResult">
+        <include refid="selectAnswerLocalhostVo"/>
+        <where>  
+            <if test="testName != null  and testName != ''"> and test_name like concat('%', #{testName}, '%')</if>
+            <if test="testTime != null "> and test_time = #{testTime}</if>
+            <if test="openid != null  and openid != ''"> and openid = #{openid}</if>
+            <if test="answer != null  and answer != ''"> and answer = #{answer}</if>
+            <if test="answerNum != null  and answerNum != ''"> and answer_num = #{answerNum}</if>
+        </where>
+    </select>
+    
+    <select id="selectAnswerLocalhostById" parameterType="Long" resultMap="AnswerLocalhostResult">
+        <include refid="selectAnswerLocalhostVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertAnswerLocalhost" parameterType="AnswerLocalhost" useGeneratedKeys="true" keyProperty="id">
+        insert into answer_localhost
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="testName != null">test_name,</if>
+            <if test="testTime != null">test_time,</if>
+            <if test="openid != null">openid,</if>
+            <if test="answer != null">answer,</if>
+            <if test="answerNum != null">answer_num,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="testName != null">#{testName},</if>
+            <if test="testTime != null">#{testTime},</if>
+            <if test="openid != null">#{openid},</if>
+            <if test="answer != null">#{answer},</if>
+            <if test="answerNum != null">#{answerNum},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAnswerLocalhost" parameterType="AnswerLocalhost">
+        update answer_localhost
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="testName != null">test_name = #{testName},</if>
+            <if test="testTime != null">test_time = #{testTime},</if>
+            <if test="openid != null">openid = #{openid},</if>
+            <if test="answer != null">answer = #{answer},</if>
+            <if test="answerNum != null">answer_num = #{answerNum},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAnswerLocalhostById" parameterType="Long">
+        delete from answer_localhost where id = #{id}
+    </delete>
+
+    <delete id="deleteAnswerLocalhostByIds" parameterType="String">
+        delete from answer_localhost where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
