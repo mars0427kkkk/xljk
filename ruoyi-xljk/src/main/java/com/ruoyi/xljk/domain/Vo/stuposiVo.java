@@ -5,6 +5,8 @@ public class stuposiVo {
     private Long type;
     private Long num;
 
+    private String answer;
+
     public String getName() {
         return name;
     }
@@ -29,12 +31,21 @@ public class stuposiVo {
         this.num = num;
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
     @Override
     public String toString() {
         return "stuposiVo{" +
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", num=" + num +
+                ", answer='" + answer + '\'' +
                 '}';
     }
 }
