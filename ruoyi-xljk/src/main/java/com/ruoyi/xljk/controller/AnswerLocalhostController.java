@@ -3,6 +3,7 @@ package com.ruoyi.xljk.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.xljk.domain.Vo.homeVo;
 import com.ruoyi.xljk.domain.Vo.homeanswerVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -106,7 +107,7 @@ public class AnswerLocalhostController extends BaseController
         Long ingnoringIndifference = homeanswerVo.getIngnoringIndifference();
         Objects += "ingnoringIndifference:" + ingnoringIndifference;
         answerLocalhost.setAnswerNum(Objects);
-        List<String> answer = homeanswerVo.getAnswer();
+        List<homeVo> answer = homeanswerVo.getAnswer();
         String string = answer.toString();
         answerLocalhost.setAnswer(string);
         return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));
@@ -129,7 +130,7 @@ public class AnswerLocalhostController extends BaseController
         Long ingnoringIndifference = homeanswerVo.getD();
         Objects += "D:" + ingnoringIndifference;
         answerLocalhost.setAnswerNum(Objects);
-        List<String> answer = homeanswerVo.getAnswer();
+        List<homeVo> answer = homeanswerVo.getAnswer();
         String string = answer.toString();
         answerLocalhost.setAnswer(string);
         return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));

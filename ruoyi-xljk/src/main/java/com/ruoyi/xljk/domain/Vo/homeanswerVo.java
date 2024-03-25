@@ -25,7 +25,7 @@ public class homeanswerVo extends correctionalMode {
     @Excel(name = "用户id ")
     private String openid;
 
-    private List<String> answer;
+    private List<homeVo> answer;
 
     public String getTestName() {
         return testName;
@@ -51,11 +51,11 @@ public class homeanswerVo extends correctionalMode {
         this.openid = openid;
     }
 
-    public List<String> getAnswer() {
+    public List<homeVo> getAnswer() {
         return answer;
     }
 
-    public void setAnswer(List<String> answer) {
+    public void setAnswer(List<homeVo> answer) {
         this.answer = answer;
     }
 
