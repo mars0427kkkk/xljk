@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.xljk.domain.Vo.stuposiVo;
 import com.ruoyi.xljk.domain.correctionalMode;
 import com.ruoyi.xljk.domain.Vo.homeVo;
 import com.ruoyi.xljk.domain.Vo.nameVo;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
@@ -98,7 +100,247 @@ public class QuestionAnswerController extends BaseController
         return success(list);
     }
 
-
+    @ApiOperation("积极心理")
+    @PostMapping ("/stuposi")
+    public AjaxResult stuposilist(@RequestBody List<homeVo> stuposi){
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        list.add("1");
+        list.add("13");
+        list.add("25");
+        list.add("37");
+        list.add("49");
+        int i = 0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+             i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("乐观希望");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("4");
+        list.add("16");
+        list.add("28");
+        list.add("40");
+        list.add("52");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("自信悦纳");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("7");
+        list.add("19");
+        list.add("31");
+        list.add("43");
+        list.add("55");
+        list.add("62");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("自控力");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(30L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("4");
+        list.add("16");
+        list.add("28");
+        list.add("40");
+        list.add("52");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("自信悦纳");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("10");
+        list.add("22");
+        list.add("34");
+        list.add("46");
+        list.add("58");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("专注力");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("2");
+        list.add("14");
+        list.add("26");
+        list.add("38");
+        list.add("50");
+        list.add("63");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("乐群合作");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(30L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("5");
+        list.add("17");
+        list.add("29");
+        list.add("41");
+        list.add("53");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("同理心");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("8");
+        list.add("20");
+        list.add("32");
+        list.add("44");
+        list.add("56");
+        list.add("64");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("感恩利他");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(30L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("11");
+        list.add("23");
+        list.add("35");
+        list.add("47");
+        list.add("59");
+        list.add("65");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("领袖力");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(30L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("3");
+        list.add("15");
+        list.add("27");
+        list.add("39");
+        list.add("51");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("抗逆力");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("6");
+        list.add("18");
+        list.add("30");
+        list.add("42");
+        list.add("54");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("感悟力");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("9");
+        list.add("21");
+        list.add("33");
+        list.add("45");
+        list.add("57");
+        list.add("66");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("好奇心");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(30L);
+        list1.add(stuposiVo);
+        list.clear();
+        stuposiVo = null;
+        i = 0;
+        list.add("12");
+        list.add("24");
+        list.add("36");
+        list.add("48");
+        list.add("60");
+        list.add("67");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
+        }
+        stuposiVo.setName("创造力");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(30L);
+        list1.add(stuposiVo);
+        return success(list1);
+    }
+    private Map<String, String> convertListToMap(List<homeVo> stuposi) {
+        Map<String, String> resultMap = new HashMap<>();
+        for (homeVo vo : stuposi) {
+            resultMap.put(vo.getName(), vo.getType());
+        }
+        return resultMap;
+    }
     @ApiOperation("积极天性")
     @GetMapping("/posi")
     public AjaxResult posilist(positiveNature positiveNature){

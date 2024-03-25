@@ -31,6 +31,11 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService
         return questionAnswerMapper.selectQuestionAnswerById(id);
     }
 
+    @Override
+    public int selectQuestionAnswer(String name, String type) {
+        return questionAnswerMapper.selectQuestionAnswer(name,type);
+    }
+
     /**
      * 查询【请填写功能名称】列表
      * 

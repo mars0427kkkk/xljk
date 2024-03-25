@@ -2,6 +2,7 @@ package com.ruoyi.xljk.mapper;
 
 import java.util.List;
 import com.ruoyi.xljk.domain.QuestionAnswer;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 【请填写功能名称】Mapper接口
@@ -18,6 +19,7 @@ public interface QuestionAnswerMapper
      * @return 【请填写功能名称】
      */
     public QuestionAnswer selectQuestionAnswerById(Long id);
+    public int selectQuestionAnswer(@Param("name") String name, @Param("type") String type);
 
     /**
      * 查询【请填写功能名称】列表

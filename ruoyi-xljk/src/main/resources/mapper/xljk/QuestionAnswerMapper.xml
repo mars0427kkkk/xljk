@@ -50,7 +50,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT MAX(question_id) AS number,question_type,file_path FROM question_answer
         <where>
         <if test="type != null  and type != ''"> and type = #{type}</if>
-    </where> GROUP BY question_type;
+    </where> GROUP BY question_type order by question_type_id desc;
+    </select>
+    <select id="selectQuestionAnswer" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT answer_score FROM question_answer WHERE question_type_id = 4 AND question_id = #{name} AND answer_id = #{type};
     </select>
 
     <insert id="insertQuestionAnswer" parameterType="QuestionAnswer" useGeneratedKeys="true" keyProperty="id">
