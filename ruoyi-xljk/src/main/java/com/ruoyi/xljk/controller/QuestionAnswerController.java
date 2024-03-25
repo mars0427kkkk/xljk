@@ -107,6 +107,17 @@ public class QuestionAnswerController extends BaseController
         ArrayList<String> list = new ArrayList<>();
         ArrayList<stuposiVo> list1 = new ArrayList<>();
         stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+        stuposiVo stuposiVo10 = new stuposiVo();
+        stuposiVo stuposiVo11 = new stuposiVo();
         list.add("1");
         list.add("13");
         list.add("25");
@@ -123,7 +134,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo.setNum(25L);
         list1.add(stuposiVo);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("4");
         list.add("16");
@@ -135,12 +146,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("自信悦纳");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(25L);
-        list1.add(stuposiVo);
+        stuposiVo1.setName("自信悦纳");
+        stuposiVo1.setType((long) i);
+        stuposiVo1.setNum(25L);
+        list1.add(stuposiVo1);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("7");
         list.add("19");
@@ -153,29 +164,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("自控力");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(30L);
-        list1.add(stuposiVo);
+        stuposiVo2.setName("自控力");
+        stuposiVo2.setType((long) i);
+        stuposiVo2.setNum(30L);
+        list1.add(stuposiVo2);
         list.clear();
-        stuposiVo = null;
-        i = 0;
-        list.add("4");
-        list.add("16");
-        list.add("28");
-        list.add("40");
-        list.add("52");
-        for (String s: list) {
-            String name = s;
-            String type = resultMap.get(name);
-            i += questionAnswerService.selectQuestionAnswer(name, type);
-        }
-        stuposiVo.setName("自信悦纳");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(25L);
-        list1.add(stuposiVo);
-        list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("10");
         list.add("22");
@@ -187,12 +181,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("专注力");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(25L);
-        list1.add(stuposiVo);
+        stuposiVo3.setName("专注力");
+        stuposiVo3.setType((long) i);
+        stuposiVo3.setNum(25L);
+        list1.add(stuposiVo3);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("2");
         list.add("14");
@@ -205,12 +199,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("乐群合作");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(30L);
-        list1.add(stuposiVo);
+        stuposiVo4.setName("乐群合作");
+        stuposiVo4.setType((long) i);
+        stuposiVo4.setNum(30L);
+        list1.add(stuposiVo4);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("5");
         list.add("17");
@@ -222,12 +216,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("同理心");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(25L);
-        list1.add(stuposiVo);
+        stuposiVo5.setName("同理心");
+        stuposiVo5.setType((long) i);
+        stuposiVo5.setNum(25L);
+        list1.add(stuposiVo5);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("8");
         list.add("20");
@@ -240,12 +234,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("感恩利他");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(30L);
-        list1.add(stuposiVo);
+        stuposiVo6.setName("感恩利他");
+        stuposiVo6.setType((long) i);
+        stuposiVo6.setNum(30L);
+        list1.add(stuposiVo6);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("11");
         list.add("23");
@@ -258,12 +252,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("领袖力");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(30L);
-        list1.add(stuposiVo);
+        stuposiVo7.setName("领袖力");
+        stuposiVo7.setType((long) i);
+        stuposiVo7.setNum(30L);
+        list1.add(stuposiVo7);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("3");
         list.add("15");
@@ -275,12 +269,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("抗逆力");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(25L);
-        list1.add(stuposiVo);
+        stuposiVo8.setName("抗逆力");
+        stuposiVo8.setType((long) i);
+        stuposiVo8.setNum(25L);
+        list1.add(stuposiVo8);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("6");
         list.add("18");
@@ -292,12 +286,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("感悟力");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(25L);
-        list1.add(stuposiVo);
+        stuposiVo9.setName("感悟力");
+        stuposiVo9.setType((long) i);
+        stuposiVo9.setNum(25L);
+        list1.add(stuposiVo9);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("9");
         list.add("21");
@@ -310,12 +304,12 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("好奇心");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(30L);
-        list1.add(stuposiVo);
+        stuposiVo10.setName("好奇心");
+        stuposiVo10.setType((long) i);
+        stuposiVo10.setNum(30L);
+        list1.add(stuposiVo10);
         list.clear();
-        stuposiVo = null;
+        //stuposiVo = null;
         i = 0;
         list.add("12");
         list.add("24");
@@ -328,10 +322,10 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
-        stuposiVo.setName("创造力");
-        stuposiVo.setType((long) i);
-        stuposiVo.setNum(30L);
-        list1.add(stuposiVo);
+        stuposiVo11.setName("创造力");
+        stuposiVo11.setType((long) i);
+        stuposiVo11.setNum(30L);
+        list1.add(stuposiVo11);
         return success(list1);
     }
     private Map<String, String> convertListToMap(List<homeVo> stuposi) {
