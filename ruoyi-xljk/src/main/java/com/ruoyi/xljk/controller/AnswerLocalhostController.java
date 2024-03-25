@@ -53,7 +53,14 @@ public class AnswerLocalhostController extends BaseController
         List<AnswerLocalhost> list = answerLocalhostService.selectAnswerLocalhostList(answerLocalhost);
         return getDataTable(list);
     }
-
+    @ApiOperation(value = "openid查询测评结果列表")
+    @GetMapping("/list1")
+    public TableDataInfo list1(AnswerLocalhost answerLocalhost)
+    {
+//        startPage();
+        List<String> list = answerLocalhostService.selectAnswerLocalhostList1(answerLocalhost);
+        return getDataTable(list);
+    }
     /**
      * 导出【请填写功能名称】列表
      */

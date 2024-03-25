@@ -32,7 +32,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectAnswerLocalhostVo"/>
         where id = #{id}
     </select>
-        
+    <select id="selectAnswerLocalhostList1" resultType="string"
+            parameterType="com.ruoyi.xljk.domain.AnswerLocalhost">
+        SELECT test_name FROM answer_localhost
+        <where>
+            <if test="testName != null  and testName != ''"> and test_name like concat('%', #{testName}, '%')</if>
+            <if test="testTime != null "> and test_time = #{testTime}</if>
+            <if test="openid != null  and openid != ''"> and openid = #{openid}</if>
+            <if test="answer != null  and answer != ''"> and answer = #{answer}</if>
+            <if test="answerNum != null  and answerNum != ''"> and answer_num = #{answerNum}</if>
+        </where>
+        GROUP BY test_name
+    </select>
+
+
     <insert id="insertAnswerLocalhost" parameterType="AnswerLocalhost" useGeneratedKeys="true" keyProperty="id">
         insert into answer_localhost
         <trim prefix="(" suffix=")" suffixOverrides=",">

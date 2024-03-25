@@ -43,6 +43,8 @@ public class AnswerLocalhostServiceImpl implements IAnswerLocalhostService
         return answerLocalhostMapper.selectAnswerLocalhostList(answerLocalhost);
     }
 
+
+
     /**
      * 新增【请填写功能名称】
      * 
@@ -89,5 +91,10 @@ public class AnswerLocalhostServiceImpl implements IAnswerLocalhostService
     public int deleteAnswerLocalhostById(Long id)
     {
         return answerLocalhostMapper.deleteAnswerLocalhostById(id);
+    }
+
+    @Override
+    public List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost) {
+        return answerLocalhostMapper.selectAnswerLocalhostList1(answerLocalhost);
     }
 }

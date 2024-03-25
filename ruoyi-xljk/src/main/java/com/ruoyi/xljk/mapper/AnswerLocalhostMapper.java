@@ -58,4 +58,7 @@ public interface AnswerLocalhostMapper
      * @return 结果
      */
     public int deleteAnswerLocalhostByIds(Long[] ids);
+
+
+    List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
 }

@@ -58,4 +58,6 @@ public interface IAnswerLocalhostService
      * @return 结果
      */
     public int deleteAnswerLocalhostById(Long id);
+
+    List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
 }
