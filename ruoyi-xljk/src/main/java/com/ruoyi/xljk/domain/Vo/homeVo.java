@@ -1,4 +1,6 @@
-package com.ruoyi.xljk.domain;
+package com.ruoyi.xljk.domain.Vo;
+
+import java.util.List;
 
 public class homeVo {
     private String name;

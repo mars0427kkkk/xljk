@@ -1,4 +1,4 @@
-package com.ruoyi.xljk.domain;
+package com.ruoyi.xljk.domain.Vo;
 
 public class nameVo {
     private Long questionId;

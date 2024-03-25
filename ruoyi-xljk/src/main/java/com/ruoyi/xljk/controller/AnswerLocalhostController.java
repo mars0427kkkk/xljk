@@ -3,6 +3,7 @@ package com.ruoyi.xljk.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.xljk.domain.Vo.homeanswerVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,6 +38,7 @@ public class AnswerLocalhostController extends BaseController
 {
     @Autowired
     private IAnswerLocalhostService answerLocalhostService;
+
 
     /**
      * 查询【请填写功能名称】列表
@@ -79,11 +81,57 @@ public class AnswerLocalhostController extends BaseController
      * 新增【请填写功能名称】
      */
 //    @PreAuthorize("@ss.hasPermi('system:localhost:add')")
-    @ApiOperation(value = "新增测评结果列表")
+//    @ApiOperation(value = "新增测评结果列表")
     @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody AnswerLocalhost answerLocalhost)
     {
+        return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));
+    }
+    @ApiOperation(value = "新增教养模式测评结果列表")
+    @Log(title = "新增测评结果列表", businessType = BusinessType.INSERT)
+    @PostMapping("/addhome")
+    public AjaxResult inserthome(@RequestBody homeanswerVo homeanswerVo)
+    {
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        answerLocalhost.setOpenid(homeanswerVo.getOpenid());
+        answerLocalhost.setTestName(homeanswerVo.getTestName());
+        String Objects = "";
+        Long strongControl = homeanswerVo.getStrongControl();
+        Objects += "strongControl:" + strongControl + ",";
+        Long authoritativeDemocracy = homeanswerVo.getAuthoritativeDemocracy();
+        Objects += "authoritativeDemocracy:" + authoritativeDemocracy + ",";
+        Long drowningIndulgence = homeanswerVo.getDrowningIndulgence();
+        Objects += "drowningIndulgence:" + drowningIndulgence + ",";
+        Long ingnoringIndifference = homeanswerVo.getIngnoringIndifference();
+        Objects += "ingnoringIndifference:" + ingnoringIndifference;
+        answerLocalhost.setAnswerNum(Objects);
+        List<String> answer = homeanswerVo.getAnswer();
+        String string = answer.toString();
+        answerLocalhost.setAnswer(string);
+        return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));
+    }
+    @ApiOperation(value = "新增积极天性测评结果列表")
+    @Log(title = "新增测评结果列表", businessType = BusinessType.INSERT)
+    @PostMapping("/addposi")
+    public AjaxResult insertposi(@RequestBody homeanswerVo homeanswerVo)
+    {
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        answerLocalhost.setOpenid(homeanswerVo.getOpenid());
+        answerLocalhost.setTestName(homeanswerVo.getTestName());
+        String Objects = "";
+        Long strongControl = homeanswerVo.getA();
+        Objects += "A:" + strongControl + ",";
+        Long authoritativeDemocracy = homeanswerVo.getB();
+        Objects += "B:" + authoritativeDemocracy + ",";
+        Long drowningIndulgence = homeanswerVo.getC();
+        Objects += "C:" + drowningIndulgence + ",";
+        Long ingnoringIndifference = homeanswerVo.getD();
+        Objects += "D:" + ingnoringIndifference;
+        answerLocalhost.setAnswerNum(Objects);
+        List<String> answer = homeanswerVo.getAnswer();
+        String string = answer.toString();
+        answerLocalhost.setAnswer(string);
         return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));
     }
 
