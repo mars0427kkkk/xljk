@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.xljk.domain.AnswerLocalhost;
 import com.ruoyi.xljk.domain.Vo.stuposiVo;
 import com.ruoyi.xljk.domain.correctionalMode;
 import com.ruoyi.xljk.domain.Vo.homeVo;
 import com.ruoyi.xljk.domain.Vo.nameVo;
 import com.ruoyi.xljk.domain.positiveNature;
+import com.ruoyi.xljk.service.IAnswerLocalhostService;
 import com.ruoyi.xljk.service.ISysFileInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,6 +50,8 @@ public class QuestionAnswerController extends BaseController
     private IQuestionAnswerService questionAnswerService;
     @Autowired
     private ISysFileInfoService sysFileInfoService;
+    @Autowired
+    private IAnswerLocalhostService answerLocalhostService;
 
     @ApiOperation("教养模式")
     @GetMapping("/home")
@@ -104,8 +108,47 @@ public class QuestionAnswerController extends BaseController
     @PostMapping ("/stuposi")
     public AjaxResult stuposilist(@RequestBody List<homeVo> stuposi){
         Map<String, String> resultMap = convertListToMap(stuposi);
-        ArrayList<String> list = new ArrayList<>();
-        ArrayList<stuposiVo> list1 = new ArrayList<>();
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (homeVo vo : stuposi) {
+            String name = vo.getType();
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(name)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(name, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append("=")
+                    .append(entry.getValue())
+                    .append(", ");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 2) {
+            stringBuilder.setLength(stringBuilder.length() - 2);
+        }
+
+        stringBuilder.append("}");
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
         stuposiVo stuposiVo = new stuposiVo();
         stuposiVo stuposiVo1 = new stuposiVo();
         stuposiVo stuposiVo2 = new stuposiVo();
@@ -431,6 +474,14 @@ public class QuestionAnswerController extends BaseController
             stuposiVo11.setAnswer("高创造力者，思维随机应变，举一反三，不易受功能固着等心理定势的干扰，能够在较短的时间内表达出较多的观念，对事物具有不寻常的独特见解。他们既善于通过独处思考孵化复杂念头，又善于通过社交采集衡量各种信息。他们具有很高的想象力和独创性，同时又有很强的现实感，使想象不会脱离实际。他们兴趣广泛，有很强的玩儿心，喜欢冒险，但同时又自律专注，效率很高。");
         }
         list1.add(stuposiVo11);
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("积极心理测评");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
         return success(list1);
     }
     private Map<String, String> convertListToMap(List<homeVo> stuposi) {
