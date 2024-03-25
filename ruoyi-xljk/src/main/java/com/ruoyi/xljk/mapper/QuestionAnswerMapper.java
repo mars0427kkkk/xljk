@@ -19,7 +19,7 @@ public interface QuestionAnswerMapper
      * @return 【请填写功能名称】
      */
     public QuestionAnswer selectQuestionAnswerById(Long id);
-    public int selectQuestionAnswer(@Param("name") String name, @Param("type") String type);
+    public int selectQuestionAnswer(@Param("name") Long name, @Param("type") String type);
 
     /**
      * 查询【请填写功能名称】列表
