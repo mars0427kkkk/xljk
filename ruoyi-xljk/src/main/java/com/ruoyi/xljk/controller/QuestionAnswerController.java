@@ -126,14 +126,14 @@ public class QuestionAnswerController extends BaseController
         String s1 = resultMap.get(keyToRemove);
         occurrencesMap.remove(s1);
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{");
+
 
         // 遍历occurrencesMap，并构建字符串
         for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
             stringBuilder.append(entry.getKey())
-                    .append("=")
+                    .append(":")
                     .append(entry.getValue())
-                    .append(", ");
+                    .append(",");
         }
 
         // 删除最后一个逗号和空格
@@ -141,7 +141,6 @@ public class QuestionAnswerController extends BaseController
             stringBuilder.setLength(stringBuilder.length() - 2);
         }
 
-        stringBuilder.append("}");
 
         // 打印结果
         String occurrencesString = stringBuilder.toString();
@@ -430,14 +429,14 @@ public class QuestionAnswerController extends BaseController
         String s1 = resultMap.get(keyToRemove);
         occurrencesMap.remove(s1);
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{");
+
 
         // 遍历occurrencesMap，并构建字符串
         for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
             stringBuilder.append(entry.getKey())
-                    .append("=")
+                    .append(":")
                     .append(entry.getValue())
-                    .append(", ");
+                    .append(",");
         }
 
         // 删除最后一个逗号和空格
@@ -445,7 +444,6 @@ public class QuestionAnswerController extends BaseController
             stringBuilder.setLength(stringBuilder.length() - 2);
         }
 
-        stringBuilder.append("}");
 
         // 打印结果
         String occurrencesString = stringBuilder.toString();
