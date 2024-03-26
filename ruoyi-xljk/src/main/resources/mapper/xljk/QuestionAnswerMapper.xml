@@ -56,6 +56,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectQuestionAnswer" resultType="java.lang.Integer">
         SELECT answer_score FROM question_answer WHERE question_type_id = 4 AND question_id = #{name} AND answer_id = #{type};
     </select>
+    <select id="selectQuestionAnswers" resultType="java.lang.Integer">
+        SELECT answer_score FROM question_answer WHERE question_type_id = 3 AND question_id = #{name} AND answer_id = #{type};
+    </select>
 
 
     <insert id="insertQuestionAnswer" parameterType="QuestionAnswer" useGeneratedKeys="true" keyProperty="id">

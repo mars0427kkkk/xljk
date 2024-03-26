@@ -105,6 +105,308 @@ public class QuestionAnswerController extends BaseController
     }
 
     @ApiOperation("积极心理")
+    @PostMapping ("/stuposis")
+    public AjaxResult stuposislist(@RequestBody List<homeVo> stuposi){
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (homeVo vo : stuposi) {
+            String name = vo.getType();
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(name)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(name, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append("=")
+                    .append(entry.getValue())
+                    .append(", ");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 2) {
+            stringBuilder.setLength(stringBuilder.length() - 2);
+        }
+
+        stringBuilder.append("}");
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+
+        list.add("1");
+        list.add("3");
+        list.add("4");
+        list.add("7");
+        list.add("10");
+        list.add("15");
+        list.add("20");
+        list.add("23");
+        int i = 0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+             i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("生命动力");
+        stuposiVo.setType((long) i);
+//        stuposiVo.setNum(25L);
+//        int i1 = i / 25;
+//        if (i1 >= 0.76){
+//          stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。乐观者更习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！\n" +
+//                  "乐观者更愿意面向未来的思考，采取积极行动，不随波逐流。需要注意乐观希望不是自欺欺人的逃避，面向未来的同时需要注意当下能够付出不亚于任何人的努力。");
+//        }else if (i1 > 0.44 && i1 < 0.76){
+//    stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。所以，要想成为一个乐观的人，要习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！");
+//        }else {
+//            stuposiVo.setAnswer("高乐观希望者在生活中总能以正向的角度看待事物与未来，期待未来会更好，并愿为之努力。在生活中习惯用积极的视角看待生活，遇到困难总是优先看到事件中有利的部分。有着乐观希望品质的人能够积极的解释发生在自己身边的事情，遇事不会自怨自艾，采用“问题为中心”的策略来调整情绪，解决问题");
+//        }
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("10");
+        list.add("3");
+        list.add("15");
+        list.add("7");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo1.setName("独立性");
+        stuposiVo1.setType((long) i);
+//        stuposiVo1.setNum(25L);
+//        int i2 = i / 25;
+//        if (i2 >= 0.76){
+//            stuposiVo1.setAnswer("自信悦纳是一个人对自己是否有能力达成特定任务，如何善用所拥有技能的一种信念。高自信悦纳者，能够积极地评价自己并相信自己有能力把事情做好。社会适应良好，积极情感体验丰富，个人自主性强，自我认识清晰，善于应对批评或负面反馈。能够正确地评价自己、接纳自己，并在此基础上使自我得到良好的发展。");
+//        }else if (i2 > 0.44 && i2 < 0.76){
+//            stuposiVo1.setAnswer("自信悦纳是一个人对自己是否有能力达成特定任务，如何善用所拥有技能的一种信念。要想成为一个自信悦纳的人，要能够积极地评价自己并相信自己有能力把事情做好。要社会适应良好，积极情感体验丰富，个人自主性强，自我认识清晰，善于应对批评或负面反馈。能够正确地评价自己、接纳自己，并在此基础上使自我得到良好的发展。");
+//        }else {
+//            stuposiVo1.setAnswer("自信悦纳是一个人对自己是否有能力达成特定任务，如何善用所拥有技能的一种信念。高自信悦纳者，能够积极地评价自己并相信自己有能力把事情做好。社会适应良好，积极情感体验丰富，个人自主性强，自我认识清晰，善于应对批评或负面反馈。");
+//        }
+        list1.add(stuposiVo1);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("20");
+        list.add("4");
+        list.add("1");
+        list.add("23");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo2.setName("幸福感");
+        stuposiVo2.setType((long) i);
+//        stuposiVo2.setNum(30L);
+//        int i3 = i / 30;
+//        if (i3 >= 0.76){
+//            stuposiVo2.setAnswer("在以下4个方面，高自控力者总是让人心生羡慕：\n" +
+//                    "① 延迟满足。为了达到长期的目标，高自控力者大多数时候都能够抵御眼前的诱惑。\n" +
+//                    "② 及时喊停。高自控力者总是能够推翻那些无用甚至有害的想法、感觉和冲动的能力。\n" +
+//                    "③ 冷静思考。在行动的时候，高自控力者更多三思而后行。头脑发热一时冲动？不存在的。\n" +
+//                    "④ 超强自制。高自控力者在大多数时候总是能够有意识地给自我设定规则，并努力遵守。");
+//        }else if (i3> 0.44 && i3 < 0.76){
+//            stuposiVo2.setAnswer("要想成为高自控力者，要在以下4个方面下功夫：\n" +
+//                    "① 延迟满足。为了达到长期的目标，高自控力者大多数时候都能够抵御眼前的诱惑。\n" +
+//                    "② 及时喊停。高自控力者总是能够推翻那些无用甚至有害的想法、感觉和冲动的能力。\n" +
+//                    "③ 冷静思考。在行动的时候，高自控力者更多三思而后行。头脑发热一时冲动？不存在的。\n" +
+//                    "④ 超强自制。高自控力者在大多数时候总是能够有意识地给自我设定规则，并努力遵守。");
+//        }else {
+//            stuposiVo2.setAnswer("高自控力的人在以下4个方面表现良好：延迟满足的能力，即为了达到长期的目标，而能够抵御眼前的诱惑的能力；能够推翻那些无用甚至有害的想法、感觉和冲动的能力；在行动的时候，采用一种更为冷静的认知系统，而不是一种冲动的情绪系统的能力；能够有意识地给自我设定规则，并努力遵守。");
+//        }
+        list1.add(stuposiVo2);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("5");
+        list.add("8");
+        list.add("9");
+        list.add("12");
+        list.add("16");
+        list.add("19");
+        list.add("24");
+        list.add("25");
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("学习动力");
+        stuposiVo3.setType((long) i);
+//        stuposiVo3.setNum(25L);
+//        int i4 = i / 25;
+//        if (i4 >= 0.76){
+//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。");
+//        }else if (i4> 0.44 && i4 < 0.76){
+//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。专注力高的人也更加独立。由于做事专心致志，所以培养了很强的自理能力。在学习中遇到问题也会积极解决。");
+//        }else {
+//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。由于注意力集中，他们阅读文章的速度快，还能清楚地辨认一些细节。");
+//        }
+        list1.add(stuposiVo3);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("24");
+        list.add("12");
+        list.add("25");
+        list.add("5");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("学习态度");
+        stuposiVo4.setType((long) i);
+//        stuposiVo4.setNum(30L);
+//        int i5 = i / 30;
+//        if (i5 >= 0.76){
+//            stuposiVo4.setAnswer("乐群合作者乐于在集体中发挥自己的能力，是团队中真诚可靠的伙伴。他们善于与人沟通合作，在集体中也往往更受欢迎和喜爱。对于人际关系中的矛盾和冲突，他们通常有适合的方法来化解，将团队凝聚起来发挥更大的力量。");
+//        }else if (i5> 0.44 && i5 < 0.76){
+//            stuposiVo4.setAnswer("乐群合作者乐于在集体中发挥自己的能力，是团队中真诚可靠的伙伴。所以，我们要善于与人沟通合作，这样在集体中也往往更受欢迎和喜爱。对于人际关系中的矛盾和冲突，要找到适合的方法来化解，将团队凝聚起来发挥更大的力量。");
+//        }else {
+//            stuposiVo4.setAnswer("高乐群合作者乐于在集体中发挥自己的能力，是团队中真诚可靠的伙伴。他们善于与人沟通合作，在集体中也往往更受欢迎和喜爱。对于人际关系中的矛盾和冲突，他们通常有适合的方法来化解，将团队凝聚起来发挥更大的力量。");
+//        }
+        list1.add(stuposiVo4);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("8");
+        list.add("16");
+        list.add("9");
+        list.add("19");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("成就感");
+        stuposiVo5.setType((long) i);
+//        stuposiVo5.setNum(25L);
+//        int i6 = i / 25;
+//        if (i6 >= 0.76){
+//            stuposiVo5.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
+//        }else if (i6> 0.44 && i6 < 0.76){
+//            stuposiVo5.setAnswer("要想成为感恩利他的人，你需要对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
+//        }else {
+//            stuposiVo5.setAnswer("高感恩利他者，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。高感恩利他者，对生活更加满意，行动的动机更强，而且更加健康，睡眠也更加充足，焦虑、抑郁、孤独感都会下降。高感恩利他的青少年更容易融入生活，拥有良好的人际关系，还会赢得更多人的帮助和认可；也更容易接纳自我的成长，有更强烈的目的感、意义感和道德感。");
+//        }
+        list1.add(stuposiVo5);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("2");
+        list.add("6");
+        list.add("11");
+        list.add("14");
+        list.add("17");
+        list.add("18");
+        list.add("21");
+        list.add("22");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo6.setName("关系动力");
+        stuposiVo6.setType((long) i);
+//        stuposiVo6.setNum(30L);
+//        int i7 = i / 30;
+//        if (i7 >= 0.76){
+//            stuposiVo6.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
+//        }else if (i7> 0.44 && i7 < 0.76){
+//            stuposiVo6.setAnswer("要想成为感恩利他的人，你需要对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
+//        }else {
+//            stuposiVo6.setAnswer("高感恩利他者，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。高感恩利他者，对生活更加满意，行动的动机更强，而且更加健康，睡眠也更加充足，焦虑、抑郁、孤独感都会下降。高感恩利他的青少年更容易融入生活，拥有良好的人际关系，还会赢得更多人的帮助和认可；也更容易接纳自我的成长，有更强烈的目的感、意义感和道德感。");
+//        }
+        list1.add(stuposiVo6);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("6");
+        list.add("21");
+        list.add("11");
+        list.add("14");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo7.setName("亲子关系");
+        stuposiVo7.setType((long) i);
+//        stuposiVo7.setNum(30L);
+//        int i8 = i / 30;
+//        if (i8 >= 0.76){
+//            stuposiVo7.setAnswer("领袖力强者对自己严格要求、精益求精，面对责任困难勇于担当，面对未知的事物可以保有热情和信念感，洋溢着乐观自信，拥有令人难以忽视的个人魅力，被很多人莫名地崇拜、喜欢、跟随，因为他们拥有一双伯乐一般的慧眼，善于发现个人身上的优势和特点，并将个人优势和团队目标进行有效地结合，让团队成员充分地意识到自己是有价值、有意义、有目标的；他们擅长运用灵活的激励方式调动团队成员的创新力、自信心、进取心，将每个个体的内在潜力发挥到极致。");
+//        }else if (i8> 0.44 && i8 < 0.76){
+//            stuposiVo7.setAnswer("领袖力强者拥有令人难以忽视的个人魅力，被很多人莫名地崇拜、喜欢、跟随。要想成为领袖力强的人，需要对自己严格要求、精益求精，面对责任困难勇于担当，面对未知的事物可以保有热情和信念感，洋溢着乐观自信，要善于发现个人身上的优势和特点，并将个人优势和团队目标进行有效地结合，让团队成员充分地意识到自己是有价值、有意义、有目标的；做事也要讲究公平公正、不唯亲不避疏，一切以团队集体的利益和目标为重，深得众人信赖。");
+//        }else {
+//            stuposiVo7.setAnswer("领袖力强者拥有大局观，对人对事讲究公平公正，对自己严格要求；善于发现个人身上的优势和特点并将其进行有机地结合；擅长灵活地运用激励的方式，有效地调动团队每个成员的创新力、自信心、进取心，善于寻找和激发个体目标，并将个体目标整合浓缩为团队的群体性目标，达到集体的行动效率和效果的最大化直到实现最终目标。");
+//        }
+        list1.add(stuposiVo7);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("17");
+        list.add("18");
+        list.add("2");
+        list.add("22");
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo8.setName("社交能力");
+        stuposiVo8.setType((long) i);
+//        stuposiVo8.setNum(25L);
+//        int i9 = i / 25;
+//        if (i9 >= 0.76){
+//            stuposiVo8.setAnswer("高抗逆力的人战斗力强，有着坚定的意志和源源不断的斗志。面对生活逆境、创伤、悲剧、威胁和其他生活重大压力事件时能够呈现出良好的适应能力。能够将困境所产生的负面影响控制在更小的范围内，并将这种负面影响的程度降至更低，在更短的时间内从困境中恢复。但同时需要小心盲目乐观的陷阱。乐观是建立在客观评价困境、周全考虑问题的基础之上的，为了解决问题，有时可以做最坏的打算、最好的努力。");
+//        }else if (i9> 0.44 && i9 < 0.76){
+//            stuposiVo8.setAnswer("高抗逆力的人战斗力强，有着坚定的意志和源源不断的斗志。面对生活逆境、创伤、悲剧、威胁和其他生活重大压力事件时能够呈现出良好的适应能力。能够将困境所产生的负面影响控制在更小的范围内，并将这种负面影响的程度降至更低，在更短的时间内从困境中恢复。但同时需要小心盲目乐观的陷阱。乐观是建立在客观评价困境、周全考虑问题的基础之上的，为了解决问题，有时可以做最坏的打算、最好的努力。");
+//        }else {
+//            stuposiVo8.setAnswer("高抗逆力者，在面对生活逆境、创伤、悲剧、威胁和其他生活重大压力事件时能够呈现出良好的适应能力。积极主动地做事，并且坚韧灵活，遇到困难不轻言放弃。善于运用批判性思维，针对各种问题提出富有意义的见解。具有较强的自我意识和积极的自我认同。对未来充满信心和希望，对环境具有很强的控制感。清楚地认识到使自己陷入逆境的原因，并甘愿承担责任，具有较强的行动力。");
+//        }
+        list1.add(stuposiVo8);
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("积极天性");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        return success(list1);
+    }
+    @ApiOperation("积极心理")
     @PostMapping ("/stuposi")
     public AjaxResult stuposilist(@RequestBody List<homeVo> stuposi){
         Map<String, String> resultMap = convertListToMap(stuposi);
@@ -170,17 +472,17 @@ public class QuestionAnswerController extends BaseController
         for (String s: list) {
             String name = s;
             String type = resultMap.get(name);
-             i += questionAnswerService.selectQuestionAnswer(name, type);
+            i += questionAnswerService.selectQuestionAnswer(name, type);
         }
         stuposiVo.setName("乐观希望");
         stuposiVo.setType((long) i);
         stuposiVo.setNum(25L);
         int i1 = i / 25;
         if (i1 >= 0.76){
-          stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。乐观者更习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！\n" +
-                  "乐观者更愿意面向未来的思考，采取积极行动，不随波逐流。需要注意乐观希望不是自欺欺人的逃避，面向未来的同时需要注意当下能够付出不亚于任何人的努力。");
+            stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。乐观者更习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！\n" +
+                    "乐观者更愿意面向未来的思考，采取积极行动，不随波逐流。需要注意乐观希望不是自欺欺人的逃避，面向未来的同时需要注意当下能够付出不亚于任何人的努力。");
         }else if (i1 > 0.44 && i1 < 0.76){
-    stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。所以，要想成为一个乐观的人，要习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！");
+            stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。所以，要想成为一个乐观的人，要习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！");
         }else {
             stuposiVo.setAnswer("高乐观希望者在生活中总能以正向的角度看待事物与未来，期待未来会更好，并愿为之努力。在生活中习惯用积极的视角看待生活，遇到困难总是优先看到事件中有利的部分。有着乐观希望品质的人能够积极的解释发生在自己身边的事情，遇事不会自怨自艾，采用“问题为中心”的策略来调整情绪，解决问题");
         }

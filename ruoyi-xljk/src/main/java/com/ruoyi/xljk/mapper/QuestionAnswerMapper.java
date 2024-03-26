@@ -62,4 +62,6 @@ public interface QuestionAnswerMapper
     public int deleteQuestionAnswerByIds(Long[] ids);
 
     List<QuestionAnswer> selectQuestionAnswerNameList(String type);
+
+    public int selectQuestionAnswers(@Param("name") Long name, @Param("type") String type);
 }
