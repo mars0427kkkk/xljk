@@ -189,6 +189,63 @@ public class QuestionAnswerController extends BaseController
         list.clear();
         //stuposiVo = null;
         i = 0;
+        list.add("5");
+        list.add("8");
+        list.add("9");
+        list.add("12");
+        list.add("16");
+        list.add("19");
+        list.add("24");
+        list.add("25");
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("学习动力");
+        stuposiVo3.setType((long) i);
+//        stuposiVo3.setNum(25L);
+//        int i4 = i / 25;
+//        if (i4 >= 0.76){
+//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。");
+//        }else if (i4> 0.44 && i4 < 0.76){
+//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。专注力高的人也更加独立。由于做事专心致志，所以培养了很强的自理能力。在学习中遇到问题也会积极解决。");
+//        }else {
+//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。由于注意力集中，他们阅读文章的速度快，还能清楚地辨认一些细节。");
+//        }
+        list1.add(stuposiVo3);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("2");
+        list.add("6");
+        list.add("11");
+        list.add("14");
+        list.add("17");
+        list.add("18");
+        list.add("21");
+        list.add("22");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo6.setName("关系动力");
+        stuposiVo6.setType((long) i);
+//        stuposiVo6.setNum(30L);
+//        int i7 = i / 30;
+//        if (i7 >= 0.76){
+//            stuposiVo6.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
+//        }else if (i7> 0.44 && i7 < 0.76){
+//            stuposiVo6.setAnswer("要想成为感恩利他的人，你需要对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
+//        }else {
+//            stuposiVo6.setAnswer("高感恩利他者，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。高感恩利他者，对生活更加满意，行动的动机更强，而且更加健康，睡眠也更加充足，焦虑、抑郁、孤独感都会下降。高感恩利他的青少年更容易融入生活，拥有良好的人际关系，还会赢得更多人的帮助和认可；也更容易接纳自我的成长，有更强烈的目的感、意义感和道德感。");
+//        }
+        list1.add(stuposiVo6);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
         list.add("10");
         list.add("3");
         list.add("15");
@@ -242,35 +299,7 @@ public class QuestionAnswerController extends BaseController
 //            stuposiVo2.setAnswer("高自控力的人在以下4个方面表现良好：延迟满足的能力，即为了达到长期的目标，而能够抵御眼前的诱惑的能力；能够推翻那些无用甚至有害的想法、感觉和冲动的能力；在行动的时候，采用一种更为冷静的认知系统，而不是一种冲动的情绪系统的能力；能够有意识地给自我设定规则，并努力遵守。");
 //        }
         list1.add(stuposiVo2);
-        list.clear();
-        //stuposiVo = null;
-        i = 0;
-        list.add("5");
-        list.add("8");
-        list.add("9");
-        list.add("12");
-        list.add("16");
-        list.add("19");
-        list.add("24");
-        list.add("25");
 
-        for (String s: list) {
-            String name = s;
-            String type = resultMap.get(name);
-            i += questionAnswerService.selectQuestionAnswers(name, type);
-        }
-        stuposiVo3.setName("学习动力");
-        stuposiVo3.setType((long) i);
-//        stuposiVo3.setNum(25L);
-//        int i4 = i / 25;
-//        if (i4 >= 0.76){
-//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。");
-//        }else if (i4> 0.44 && i4 < 0.76){
-//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。专注力高的人也更加独立。由于做事专心致志，所以培养了很强的自理能力。在学习中遇到问题也会积极解决。");
-//        }else {
-//            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。由于注意力集中，他们阅读文章的速度快，还能清楚地辨认一些细节。");
-//        }
-        list1.add(stuposiVo3);
         list.clear();
         //stuposiVo = null;
         i = 0;
@@ -319,34 +348,7 @@ public class QuestionAnswerController extends BaseController
 //            stuposiVo5.setAnswer("高感恩利他者，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。高感恩利他者，对生活更加满意，行动的动机更强，而且更加健康，睡眠也更加充足，焦虑、抑郁、孤独感都会下降。高感恩利他的青少年更容易融入生活，拥有良好的人际关系，还会赢得更多人的帮助和认可；也更容易接纳自我的成长，有更强烈的目的感、意义感和道德感。");
 //        }
         list1.add(stuposiVo5);
-        list.clear();
-        //stuposiVo = null;
-        i = 0;
-        list.add("2");
-        list.add("6");
-        list.add("11");
-        list.add("14");
-        list.add("17");
-        list.add("18");
-        list.add("21");
-        list.add("22");
-        for (String s: list) {
-            String name = s;
-            String type = resultMap.get(name);
-            i += questionAnswerService.selectQuestionAnswers(name, type);
-        }
-        stuposiVo6.setName("关系动力");
-        stuposiVo6.setType((long) i);
-//        stuposiVo6.setNum(30L);
-//        int i7 = i / 30;
-//        if (i7 >= 0.76){
-//            stuposiVo6.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
-//        }else if (i7> 0.44 && i7 < 0.76){
-//            stuposiVo6.setAnswer("要想成为感恩利他的人，你需要对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
-//        }else {
-//            stuposiVo6.setAnswer("高感恩利他者，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。高感恩利他者，对生活更加满意，行动的动机更强，而且更加健康，睡眠也更加充足，焦虑、抑郁、孤独感都会下降。高感恩利他的青少年更容易融入生活，拥有良好的人际关系，还会赢得更多人的帮助和认可；也更容易接纳自我的成长，有更强烈的目的感、意义感和道德感。");
-//        }
-        list1.add(stuposiVo6);
+
         list.clear();
         //stuposiVo = null;
         i = 0;
@@ -399,7 +401,7 @@ public class QuestionAnswerController extends BaseController
         String string = list1.toString();
         String s = resultMap.get("openid");
         answerLocalhost.setOpenid(s);
-        answerLocalhost.setTestName("积极天性");
+        answerLocalhost.setTestName("积极心理动力");
         answerLocalhost.setAnswer(string);
         answerLocalhost.setAnswerNum(occurrencesString);
 
