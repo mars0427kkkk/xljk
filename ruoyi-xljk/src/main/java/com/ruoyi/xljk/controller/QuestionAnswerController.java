@@ -137,8 +137,8 @@ public class QuestionAnswerController extends BaseController
         }
 
         // 删除最后一个逗号和空格
-        if (stringBuilder.length() > 2) {
-            stringBuilder.setLength(stringBuilder.length() - 2);
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
 
 
@@ -440,9 +440,10 @@ public class QuestionAnswerController extends BaseController
         }
 
         // 删除最后一个逗号和空格
-        if (stringBuilder.length() > 2) {
-            stringBuilder.setLength(stringBuilder.length() - 2);
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
+
 
 
         // 打印结果
