@@ -25,8 +25,8 @@ public class AnswerLocalhost extends BaseEntity
     private String testName;
 
     /** 测试时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Excel(name = "测试时间", width = 30, dateFormat = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Excel(name = "测试时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date testTime;
 
     /** 用户id

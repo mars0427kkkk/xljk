@@ -2,6 +2,7 @@ package com.ruoyi.xljk.service;
 
 import java.util.List;
 import com.ruoyi.xljk.domain.AnswerLocalhost;
+import com.ruoyi.xljk.domain.QuestionAnswer;
 
 /**
  * 【请填写功能名称】Service接口
@@ -59,5 +60,5 @@ public interface IAnswerLocalhostService
      */
     public int deleteAnswerLocalhostById(Long id);
 
-    List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
+    List<QuestionAnswer> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
 }

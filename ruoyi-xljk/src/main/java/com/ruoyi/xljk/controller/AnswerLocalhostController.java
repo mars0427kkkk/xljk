@@ -3,8 +3,10 @@ package com.ruoyi.xljk.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.xljk.domain.QuestionAnswer;
 import com.ruoyi.xljk.domain.Vo.homeVo;
 import com.ruoyi.xljk.domain.Vo.homeanswerVo;
+import com.ruoyi.xljk.service.IQuestionAnswerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -58,7 +60,7 @@ public class AnswerLocalhostController extends BaseController
     public TableDataInfo list1(AnswerLocalhost answerLocalhost)
     {
 //        startPage();
-        List<String> list = answerLocalhostService.selectAnswerLocalhostList1(answerLocalhost);
+        List<QuestionAnswer> list = answerLocalhostService.selectAnswerLocalhostList1(answerLocalhost);
         return getDataTable(list);
     }
     /**

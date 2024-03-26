@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectQuestionAnswerVo">
-        select id, question_id, question_content, answer_id, answer_content, answer_score, question_type_id, question_type, type from question_answer
+        select id, question_id, question_content, answer_id, answer_content, answer_score, question_type_id, question_type,file_path, type from question_answer
     </sql>
 
     <select id="selectQuestionAnswerList" parameterType="QuestionAnswer" resultMap="QuestionAnswerResult">
@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="questionTypeId != null "> and question_type_id = #{questionTypeId}</if>
             <if test="questionType != null  and questionType != ''"> and question_type = #{questionType}</if>
             <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="filePath != null  and filePath != ''"> and file_path = #{filePath}</if>
         </where>
     </select>
     

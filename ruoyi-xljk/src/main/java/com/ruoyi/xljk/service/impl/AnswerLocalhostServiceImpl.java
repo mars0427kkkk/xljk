@@ -1,6 +1,10 @@
 package com.ruoyi.xljk.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.ruoyi.xljk.domain.QuestionAnswer;
+import com.ruoyi.xljk.mapper.QuestionAnswerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.xljk.mapper.AnswerLocalhostMapper;
@@ -93,8 +97,23 @@ public class AnswerLocalhostServiceImpl implements IAnswerLocalhostService
         return answerLocalhostMapper.deleteAnswerLocalhostById(id);
     }
 
+    @Autowired
+    private QuestionAnswerMapper questionAnswerMapper;
     @Override
-    public List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost) {
-        return answerLocalhostMapper.selectAnswerLocalhostList1(answerLocalhost);
+    public List<QuestionAnswer>  selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost) {
+        List<String> strings = answerLocalhostMapper.selectAnswerLocalhostList1(answerLocalhost);
+        List<QuestionAnswer> list = new ArrayList<>();
+        for (String s:strings) {
+            QuestionAnswer questionAnswer = new QuestionAnswer();
+            questionAnswer.setQuestionType(s);
+            String filePath =null;
+            List<QuestionAnswer> questionAnswers = questionAnswerMapper.selectQuestionAnswerList(questionAnswer);
+            for (QuestionAnswer answer : questionAnswers) {
+                 filePath = answer.getFilePath();
+            }
+            questionAnswer.setFilePath(filePath);
+            list.add(questionAnswer);
+        }
+        return  list;
     }
 }
