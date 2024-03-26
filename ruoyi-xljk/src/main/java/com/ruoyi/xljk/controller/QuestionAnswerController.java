@@ -463,6 +463,9 @@ public class QuestionAnswerController extends BaseController
         stuposiVo stuposiVo9 = new stuposiVo();
         stuposiVo stuposiVo10 = new stuposiVo();
         stuposiVo stuposiVo11 = new stuposiVo();
+        stuposiVo stuposiVo12 = new stuposiVo();
+        stuposiVo stuposiVo13 = new stuposiVo();
+        stuposiVo stuposiVo14 = new stuposiVo();
         list.add("1");
         list.add("13");
         list.add("25");
@@ -776,6 +779,18 @@ public class QuestionAnswerController extends BaseController
             stuposiVo11.setAnswer("高创造力者，思维随机应变，举一反三，不易受功能固着等心理定势的干扰，能够在较短的时间内表达出较多的观念，对事物具有不寻常的独特见解。他们既善于通过独处思考孵化复杂念头，又善于通过社交采集衡量各种信息。他们具有很高的想象力和独创性，同时又有很强的现实感，使想象不会脱离实际。他们兴趣广泛，有很强的玩儿心，喜欢冒险，但同时又自律专注，效率很高。");
         }
         list1.add(stuposiVo11);
+        long l = stuposiVo.getType() + stuposiVo1.getType() + stuposiVo2.getType() + stuposiVo3.getType();
+        stuposiVo12.setName("自我认知");
+        stuposiVo12.setType(l);
+        list1.add(stuposiVo12);
+        long l1 = stuposiVo4.getType() + stuposiVo5.getType() + stuposiVo6.getType() + stuposiVo7.getType();
+        stuposiVo13.setName("社会协作");
+        stuposiVo13.setType(l1);
+        list1.add(stuposiVo13);
+        long l2 = stuposiVo8.getType() + stuposiVo9.getType() + stuposiVo10.getType() + stuposiVo11.getType();
+        stuposiVo14.setName("人际发展");
+        stuposiVo14.setType(l2);
+        list1.add(stuposiVo14);
         String string = list1.toString();
         String s = resultMap.get("openid");
         answerLocalhost.setOpenid(s);
