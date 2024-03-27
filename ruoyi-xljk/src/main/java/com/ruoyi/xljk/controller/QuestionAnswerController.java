@@ -158,6 +158,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo stuposiVo7 = new stuposiVo();
         stuposiVo stuposiVo8 = new stuposiVo();
 
+
         list.add("1");
         list.add("3");
         list.add("4");
@@ -174,7 +175,18 @@ public class QuestionAnswerController extends BaseController
         }
         stuposiVo.setName("生命动力");
         stuposiVo.setType((long) i);
-//        stuposiVo.setNum(25L);
+        stuposiVo.setNum(32L);
+        if (i <= 6){
+            stuposiVo.setAnswer("日常生活中，可能表现为独立性差，较少按照自己的想法或意愿做事；从属性强，缺乏主观能动性，生活中体验到的幸福感也不是很强，偶尔可能会出现抑郁情绪。建议家长从孩子的情绪感受入手，加深沟通交流，尽可能共情孩子，引导孩子逐步恢复对生活的兴趣和热爱。");
+        }else if (i >= 7 && i <= 12){
+            stuposiVo.setAnswer("日常生活中，可能表现为个体主观能动性差或感知到的幸福感比较少，经营自己的生活时感到力不从心。建议家长从孩子的兴趣爱好入手，与孩子一起找出一两件最感兴趣的项目（如运动、音乐、绘画等）进行定期活动，逐步激发起孩子对生活的兴趣。");
+        }else if (i >= 13 && i <= 19){
+            stuposiVo.setAnswer("日常生活中，可能表现为对生活持无所谓态度，凡事任由家长或老师安排，没有足够的成长动力，也没有体验到很强的幸福感和满意度。通常来说，这样的孩子情绪相对稳定，不容易被周围环境影响。建议家长在日常生活中多为孩子创造一些自己做主的权利和机会，逐步树立主人翁意识，培养主观能动性。");
+        }else if (i >= 20 && i <= 25){
+            stuposiVo.setAnswer("日常生活中，可能表现为对生活有一定追求，能够独立规划自己的生活，凡事有自己的思路和想法，对待生活认真负责。偶尔会有追求过于完美的倾向，对自己造成一定的压力，产生紧张或焦虑情绪。建议家长加深与孩子的沟通，及时关注孩子的情绪，帮助孩子掌握一些调节和控制负性情绪的方式方法，提升主观幸福感。");
+        } else {
+            stuposiVo.setAnswer("日常生活中，可能表现为独立性强，凡事有自己的思路和想法，目标清晰，热爱生活，有极强的生活满意度和主观幸福感。建议家长帮助孩子维持平和、乐观、开朗的心态，积极学习一些心理保健知识和心理调节技能，维护心理健康状态的平衡。");
+        }
 //        int i1 = i / 25;
 //        if (i1 >= 0.76){
 //          stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。乐观者更习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！\n" +
@@ -204,7 +216,18 @@ public class QuestionAnswerController extends BaseController
         }
         stuposiVo3.setName("学习动力");
         stuposiVo3.setType((long) i);
-//        stuposiVo3.setNum(25L);
+        stuposiVo3.setNum(32L);
+        if (i <= 6){
+            stuposiVo.setAnswer("日常生活中， 可能表现为与同伴相比，更容易对学习感到厌烦，学习意愿和对学习的自信都非常欠缺，或许已经产生了比较明显的厌学表现，如：不相信自己能够通过努力获得较好的学习成绩，对学习有强烈的抵触情绪，产生回避学习的行为，甚至旷课、休学等。建议家长首先安顿好自己的焦虑情绪，以稳定的状态去面对孩子，在生活中给孩子带来更多的鼓励和引导，协助孩子制定切实可行的学习目标，从小处着手，陪伴孩子一点一滴地进步，逐渐帮助孩子建立学习自信。");
+        }else if (i >= 7 && i <= 12){
+            stuposiVo.setAnswer("日常生活中， 可能表现为学习方面存在一定的问题，如自感学习压力较大、学习缺乏内动力、学习目标不够明确等，也可能出现学习效率低下、在学习方面自信和动机不足等现象。建议家长支持孩子积极参与课外活动，帮助孩子减缓学习压力；另外，家长需要降低对学习成绩的关注，而更多地关注学习的过程，给孩子提供良好的支持。");
+        }else if (i >= 13 && i <= 19){
+            stuposiVo.setAnswer("日常生活中， 可能表现为学习状态一般，对待学习的态度中规中矩，基本能够跟上课堂的学习进度，课后也会进行一定的学习。对学习说不上讨厌但也谈不上喜欢。建议家长给孩子更多的支持和鼓励，控制批评和指责，在生活中帮助孩子培养对某一学科的兴趣爱好，逐渐引导孩子树立学习志向，找到学习真正的意义，进一步提升学习动机。");
+        }else if (i >= 20 && i <= 25){
+            stuposiVo.setAnswer("日常生活中， 可能表现为学习状态良好，有自己的学习目标，能够通过努力克服学习中遇到的困难，虽然也会感受到学习压力，但是能够进行自我调整。建议家长给予孩子更多的鼓励和支持，引导孩子客观公正地评价自身学业水平，在实事求是的基础上，以积极平和的心态面对学习压力。");
+        } else {
+            stuposiVo.setAnswer("日常生活中， 可能表现为有较强的学习内动力，在学习中能够积极面对困难，并通过完成挑战性的学习任务获得快乐及成就感。虽然会感受到一定的学习压力，但是这种压力对于孩子来说也是一种积极的动力，会促进他的学习不断进步。这与家长从小对孩子的支持和引导是分不开的。建议家长继续保持，引导孩子更加深刻地理解学习的意义，同时拓展视野，辅助孩子塑造自己的格局与成长方向。");
+        }
 //        int i4 = i / 25;
 //        if (i4 >= 0.76){
 //            stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。");
@@ -232,7 +255,18 @@ public class QuestionAnswerController extends BaseController
         }
         stuposiVo6.setName("关系动力");
         stuposiVo6.setType((long) i);
-//        stuposiVo6.setNum(30L);
+        stuposiVo6.setNum(32L);
+        if (i <= 6){
+            stuposiVo.setAnswer("日常生活中，可能表现为亲子之间存在问题，父母难以了解孩子的想法，孩子也较少向父母求助，很难从父母中获得想要的支持。孩子处理情绪问题的能力也比较差，换位思考能力较弱，较难融入集体，长此以往，容易出现厌学、辍学的倾向。建议家长从情绪感受入手，多倾听孩子的想法，一同构建安全、可信任的亲子和社交关系。");
+        }else if (i >= 7 && i <= 12){
+            stuposiVo.setAnswer("日常生活中，可能表现为亲子之间存在一些问题，如父母不太了解孩子的想法，孩子偶尔会向父母求助，也很难从父母中获得有效支持。孩子有可能不妥当地处理自己的情绪问题，只站在自己的角度处理与他人的关系，在学校的集体融入度一般，偶尔会出现社交问题。建议家长从孩子感兴趣的人与事情出发，鼓励孩子多与朋友交往，给孩子提供良好的支持。");
+        }else if (i >= 13 && i <= 19){
+            stuposiVo.setAnswer("日常生活中，可能表现为与父母的关系一般，父母不能够完全了解孩子的想法，有时也不能及时地提供心理支持。社交关系方面，能够处理自己的部分情绪问题，但是从社交关系中获得的社会支持还不够。建议家长更多地支持和鼓励孩子参加集体活动，从集体中获得归属感和价值感。");
+        }else if (i >= 20 && i <= 25){
+            stuposiVo.setAnswer("日常生活中，可能表现为亲子关系良好，父母比较了解孩子的想法，大部分时间孩子可以处理自己的问题，当询问父母的意见时，也可以获得有效的支持。孩子处理自己情绪问题的能力也比较好，换位思考能力较强，可以很快融入集体，在集体中有一定影响力和话语权。建议家长对孩子积极的行为及看法多加赞赏，并主动和孩子一起尝试有趣的事物。");
+        } else {
+            stuposiVo.setAnswer("日常生活中，可能表现为亲子关系融洽，父母能够及时了解孩子的想法，孩子也可以独立处理自己的事情。遇到问题时，孩子会询问父母的意见，并获得足够有效的支持。孩子了解自己的情绪，也可以很好地处理自己的情绪问题；换位思考能力较强，可以又快又好地融入集体，在集体中有较高的影响力和话语权。建议家长为孩子提供更多的发展空间，在孩子需要时及时给予足够的支持和陪伴。");
+        }
 //        int i7 = i / 30;
 //        if (i7 >= 0.76){
 //            stuposiVo6.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
@@ -255,7 +289,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo1.setName("独立性");
+        stuposiVo1.setAnswer("独立性指的是人的意志不易受他人的影响，有较强的独立提出和实施行为目的的能力，它反映了意志的行为价值的内在稳定性。遇事有主见，有成就动机，不依赖他人就能独立处理事情，积极主动地完成各项实际工作的心理品质，它伴随勇敢、自信、认真、专注、责任感和不怕困难的精神。");
         stuposiVo1.setType((long) i);
+
 //        stuposiVo1.setNum(25L);
 //        int i2 = i / 25;
 //        if (i2 >= 0.76){
@@ -279,6 +315,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo2.setName("幸福感");
+        stuposiVo2.setAnswer("幸福感，又称主观幸福感（Subjective Well-Being，简称SWB），主要是指人们对其生活质量所做的情感性和认知性的整体评价。在这种意义上，决定人们是否幸福的并不是实际发生了什么，关键是人们对所发生的事情在情绪上做出何种解释，在认知上进行怎样的加工。");
         stuposiVo2.setType((long) i);
 //        stuposiVo2.setNum(30L);
 //        int i3 = i / 30;
@@ -312,6 +349,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo4.setName("学习态度");
+        stuposiVo4.setAnswer("学习态度是指学习者对学习较为持久的肯定或否定的行为倾向或内部反应的准备状态。它通常可以从学生对待学习的注意状况、情绪状况和意志状态等方面加以判定和说明。");
         stuposiVo4.setType((long) i);
 //        stuposiVo4.setNum(30L);
 //        int i5 = i / 30;
@@ -336,6 +374,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo5.setName("成就感");
+        stuposiVo5.setAnswer("成就感指一个人做完一件事情或者在做一件事情时，为自己所做的事情感到愉快或成功的感觉，即愿望与现实达到平衡产生的一种心理感受。");
         stuposiVo5.setType((long) i);
 //        stuposiVo5.setNum(25L);
 //        int i6 = i / 25;
@@ -361,6 +400,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo7.setName("亲子关系");
+        stuposiVo7.setAnswer("亲子关系是父母与子女之间的一种双向作用的人际关系。亲子关系是一个人最早建立起来的人际关系。父母的人品，对子女的教养、抚养、教育方式以及态度等，都在这种关系中直接对孩子的身心发展产生影响，也将影响子女今后的人际交往关系。亲子关系是个体和社会生活中重要的一部分，在青少年时期，亲子关系面临着打破重建的任务。");
         stuposiVo7.setType((long) i);
 //        stuposiVo7.setNum(30L);
 //        int i8 = i / 30;
@@ -386,6 +426,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo8.setName("社交能力");
+        stuposiVo8.setAnswer("社交能力，指觉察他人情绪意向，有效地理解他人和善于同他人交际的能力，由人际感受力、人际理解力、合作与协调力等方面构成。青少年是一个自我意识和社会需求都不断成长的一个阶段，其社交特点开始慢慢趋近成人。");
         stuposiVo8.setType((long) i);
 //        stuposiVo8.setNum(25L);
 //        int i9 = i / 25;
@@ -397,6 +438,7 @@ public class QuestionAnswerController extends BaseController
 //            stuposiVo8.setAnswer("高抗逆力者，在面对生活逆境、创伤、悲剧、威胁和其他生活重大压力事件时能够呈现出良好的适应能力。积极主动地做事，并且坚韧灵活，遇到困难不轻言放弃。善于运用批判性思维，针对各种问题提出富有意义的见解。具有较强的自我意识和积极的自我认同。对未来充满信心和希望，对环境具有很强的控制感。清楚地认识到使自己陷入逆境的原因，并甘愿承担责任，具有较强的行动力。");
 //        }
         list1.add(stuposiVo8);
+
         String string = list1.toString();
         String s = resultMap.get("openid");
         answerLocalhost.setOpenid(s);
