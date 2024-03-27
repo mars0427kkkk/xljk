@@ -11,6 +11,8 @@ import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.common.core.domain.model.WxLoginBody;
 import com.ruoyi.common.core.domain.vo.WxLoginResultVo;
 import com.ruoyi.common.utils.http.HttpUtils;
+import com.ruoyi.xljk.domain.WxSysUser;
+import com.ruoyi.xljk.service.IWxSysUserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +71,8 @@ public class SysLoginController
         ajax.put(Constants.TOKEN, token);
         return ajax;
     }
-
+    @Autowired
+    private IWxSysUserService wxsysUserService;
     /**
      * 登录方法
      *
@@ -111,10 +114,12 @@ public class SysLoginController
         if (StrUtil.isEmpty(openid)) {
             return AjaxResult.error("未获取到openid");
         }
+        WxSysUser wxSysUser = wxsysUserService.selectSysUserByOpenId(openid);
         // 生成令牌
         String token = loginService.wxLogin(openid, wxLoginBody.getNickName(), wxLoginBody.getAvatarUrl());
         ajax.put(Constants.TOKEN, token);
         ajax.put(Constants.OPENID, openid);
+        ajax.put(Constants.WxUserInfo,wxSysUser);
 
         return ajax;
     }

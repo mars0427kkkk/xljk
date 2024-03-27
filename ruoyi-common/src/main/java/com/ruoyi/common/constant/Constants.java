@@ -94,6 +94,7 @@ public class Constants
      */
     public static final String TOKEN = "token";
     public static final String OPENID = "openid";
+    public static final String WxUserInfo = "WxUserInfo";
 
     /**
      * 令牌前缀
