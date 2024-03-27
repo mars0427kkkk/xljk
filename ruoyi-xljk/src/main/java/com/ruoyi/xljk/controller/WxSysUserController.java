@@ -32,7 +32,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * @date 2024-03-27
  */
 @RestController
-@Api(value = "wx用户信息")
+@Api(tags = "wx用户信息")
 @RequestMapping("/xljk/user")
 public class WxSysUserController extends BaseController
 {
