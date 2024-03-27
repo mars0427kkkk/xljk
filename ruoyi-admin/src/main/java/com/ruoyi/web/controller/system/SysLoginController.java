@@ -114,9 +114,10 @@ public class SysLoginController
         if (StrUtil.isEmpty(openid)) {
             return AjaxResult.error("未获取到openid");
         }
-        WxSysUser wxSysUser = wxsysUserService.selectSysUserByOpenId(openid);
+
         // 生成令牌
         String token = loginService.wxLogin(openid, wxLoginBody.getNickName(), wxLoginBody.getAvatarUrl());
+        WxSysUser wxSysUser = wxsysUserService.selectSysUserByOpenId(openid);
         ajax.put(Constants.TOKEN, token);
         ajax.put(Constants.OPENID, openid);
         ajax.put(Constants.WxUserInfo,wxSysUser);
