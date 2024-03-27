@@ -92,7 +92,7 @@ public class SysFileInfoController extends BaseController {
     @GetMapping("/list")
     public TableDataInfo list(SysFileInfo sysFileInfo)
     {
-        startPage();
+//        startPage();
         List<SysFileInfo> list = sysFileInfoService.selectSysFileInfoList(sysFileInfo);
         return getDataTable(list);
     }
