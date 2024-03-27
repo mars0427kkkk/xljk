@@ -25,8 +25,26 @@ public class SysFileInfo extends BaseEntity
     /** 文件路径 */
     @Excel(name = "文件路径")
     private String filePath;
+    private String textOne;
+    private String textTwo;
 
-    public void setFileId(Long fileId) 
+    public String getTextOne() {
+        return textOne;
+    }
+
+    public void setTextOne(String textOne) {
+        this.textOne = textOne;
+    }
+
+    public String getTextTwo() {
+        return textTwo;
+    }
+
+    public void setTextTwo(String textTwo) {
+        this.textTwo = textTwo;
+    }
+
+    public void setFileId(Long fileId)
     {
         this.fileId = fileId;
     }
@@ -60,6 +78,8 @@ public class SysFileInfo extends BaseEntity
             .append("fileId", getFileId())
             .append("fileName", getFileName())
             .append("filePath", getFilePath())
+            .append("textOne", getTextOne())
+            .append("textTwo", getTextTwo())
             .toString();
     }
 }

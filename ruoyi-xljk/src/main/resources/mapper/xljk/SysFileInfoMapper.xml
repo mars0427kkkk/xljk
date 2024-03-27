@@ -8,10 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="fileId"    column="file_id"    />
         <result property="fileName"    column="file_name"    />
         <result property="filePath"    column="file_path"    />
+        <result property="textOne"    column="textOne"    />
+        <result property="textTwo"    column="textTwo"    />
     </resultMap>
 
     <sql id="selectSysFileInfoVo">
-        select file_id, file_name, file_path from sys_file_info
+        select file_id, file_name, file_path  , textOne , textTwo from sys_file_info
     </sql>
 
     <select id="selectSysFileInfoList" parameterType="SysFileInfo" resultMap="SysFileInfoResult">
