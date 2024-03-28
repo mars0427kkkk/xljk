@@ -119,7 +119,9 @@ public class AnswerLocalhostController extends BaseController
         List<homeVo> answer = homeanswerVo.getAnswer();
         String string = answer.toString();
         answerLocalhost.setAnswer(string);
-        return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        return success(answerLocalhost1);
     }
     @ApiOperation(value = "新增积极天性测评结果列表")
     @Log(title = "新增测评结果列表", businessType = BusinessType.INSERT)
@@ -142,7 +144,9 @@ public class AnswerLocalhostController extends BaseController
         List<homeVo> answer = homeanswerVo.getAnswer();
         String string = answer.toString();
         answerLocalhost.setAnswer(string);
-        return toAjax(answerLocalhostService.insertAnswerLocalhost(answerLocalhost));
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        return success(answerLocalhost1);
     }
 
     /**

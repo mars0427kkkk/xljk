@@ -38,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -184,6 +185,8 @@ public class WxPayNewServiceImpl implements WxPayNewService {
     @Override
     public Map<String, String> jsapiWxxPay(JsapiPayDto payDto) throws Exception {
         String openid = payDto.getOpenid();
+        Date testTime = payDto.getTestTime();
+        String testName = payDto.getTestName();
 
         OrderInform orderInform = orderInformService.getOrderInformByOpenId(openid);
         // 已经生成预订单号的直接返回
@@ -221,6 +224,8 @@ public class WxPayNewServiceImpl implements WxPayNewService {
         orderInform.setFlags(false);
         orderInform.setDescribeInfo("vip卡");
         orderInform.setMoney(payDto.getMoney());
+        orderInform.setTestName(testName);
+        orderInform.setTestTime(testTime);
         orderInform.setCreateTime(new Date());
         orderInform.setUpdateTime(new Date());
         orderInform = orderInformService.createNewOrderInform(orderInform);
@@ -330,9 +335,17 @@ public class WxPayNewServiceImpl implements WxPayNewService {
                 orderInform.setFlags(true);
                 orderInform.setUpdateTime(new Date());
                 orderInformService.updateOrderInformOfFlags(orderInform);
+                AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+                answerLocalhost.setOpenid(orderInform.getOpenId());
+                answerLocalhost.setStatus(0L);
+                answerLocalhost.setTestName(orderInform.getTestName());
+                answerLocalhost.setTestTime(orderInform.getTestTime());
                 // 更新报告vip状态
-                AnswerLocalhost answerLocalhost = answerLocalhostService.findByOpenid(orderInform.getOpenId());
-                answerLocalhost.setStatus(1L);
+                List<AnswerLocalhost> answerLocalhosts = answerLocalhostService.selectAnswerLocalhostList(answerLocalhost);
+                for (AnswerLocalhost localhost : answerLocalhosts) {
+                    localhost.setStatus(1L);
+                    answerLocalhostService.updateAnswerLocalhost(localhost);
+                }
 
                 answerLocalhostService.updateAnswerLocalhost(answerLocalhost);
             } catch (Exception e) {

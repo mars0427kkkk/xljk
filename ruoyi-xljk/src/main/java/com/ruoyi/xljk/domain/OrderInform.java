@@ -40,6 +40,12 @@ public class OrderInform {
     @Column(name = "describe_info")
     private String describeInfo;
 
+    @Column(name = "test_name")
+    private String testName;
+
+    @Column(name = "test_time")
+    private Date testTime;
+
     @Column(name = "create_time")
     @CreatedDate
     private Date createTime;

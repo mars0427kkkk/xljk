@@ -159,6 +159,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo stuposiVo6 = new stuposiVo();
         stuposiVo stuposiVo7 = new stuposiVo();
         stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
 
 
         list.add("1");
@@ -455,6 +456,10 @@ public class QuestionAnswerController extends BaseController
         answerLocalhost.setAnswerNum(occurrencesString);
 
         answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setAnswer(String.valueOf(answerLocalhost1.getTestTime()));
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
         return success(list1);
     }
     private boolean areAllValuesEqual(Map<String, String> map) {
@@ -536,6 +541,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo stuposiVo12 = new stuposiVo();
         stuposiVo stuposiVo13 = new stuposiVo();
         stuposiVo stuposiVo14 = new stuposiVo();
+        stuposiVo stuposiVo15 = new stuposiVo();
         list.add("1");
         list.add("13");
         list.add("25");
@@ -875,6 +881,10 @@ public class QuestionAnswerController extends BaseController
         answerLocalhost.setAnswerNum(occurrencesString);
 
         answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo15.setAnswer(String.valueOf(answerLocalhost1.getTestTime()));
+        stuposiVo15.setAnswer(answerLocalhost1.getTestName());
+        list1.add(stuposiVo15);
         return success(list1);
     }
     private Map<String, String> convertListToMap(List<homeVo> stuposi) {
