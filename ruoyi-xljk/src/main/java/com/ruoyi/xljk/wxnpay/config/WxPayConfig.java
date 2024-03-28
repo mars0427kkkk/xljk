@@ -130,5 +130,4 @@ public class WxPayConfig implements Serializable {
         return httpClient;
     }
 
-
 }
