@@ -464,16 +464,20 @@ public class QuestionAnswerController extends BaseController
     }
     private boolean areAllValuesEqual(Map<String, String> map) {
         String keyToRemove = "openid";
+        String s = map.get(keyToRemove);
+
         map.remove(keyToRemove);
         String firstValue = null;
         for (String value : map.values()) {
             if (firstValue == null) {
                 firstValue = value;
             } else if (!firstValue.equals(value)) {
+                map.put(keyToRemove,s);
                 return false; // 发现一个与第一个值不同的值，返回false
+
             }
         }
-
+        map.put(keyToRemove,s);
         return true; // 所有值都与第一个值相同
     }
     @ApiOperation("积极心理")
