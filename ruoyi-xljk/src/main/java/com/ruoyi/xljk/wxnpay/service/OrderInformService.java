@@ -77,9 +77,9 @@ public class OrderInformService {
 //        return save;
 //    }
 
-    public OrderInform getOrderInformByOpenId(String openid) {
+    public OrderInform getOrderInformByOpenId(String openid,String testName,Date testTime) {
 
-        return orderInformDao.getOrderByOpenId(openid);
+        return orderInformDao.getOrderByOpenId(openid,testName,testTime);
     }
 
     public OrderInform createNewOrderInform(OrderInform orderInform) {

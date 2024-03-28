@@ -5,6 +5,7 @@ import com.ruoyi.xljk.domain.OrderInform;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +21,6 @@ public interface OrderInformDao extends JpaRepository<OrderInform,Integer> {
     @Query(value = "select * from order_inform where order_id = ?1", nativeQuery = true)
     OrderInform getByOrderId(String orderNo);
 
-    @Query(value = "select * from order_inform where  open_id = ?1", nativeQuery = true)
-    OrderInform getOrderByOpenId(String openid);
+    @Query(value = "select * from order_inform where  open_id = ?1 and test_name = ?2 and test_time = ?3", nativeQuery = true)
+    OrderInform getOrderByOpenId(String openid, String testName, Date testTime);
 }

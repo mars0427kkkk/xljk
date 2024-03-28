@@ -188,7 +188,7 @@ public class WxPayNewServiceImpl implements WxPayNewService {
         Date testTime = payDto.getTestTime();
         String testName = payDto.getTestName();
 
-        OrderInform orderInform = orderInformService.getOrderInformByOpenId(openid);
+        OrderInform orderInform = orderInformService.getOrderInformByOpenId(openid,testName,testTime);
         // 已经生成预订单号的直接返回
         if (orderInform != null) {
             Date curDate = new Date();
