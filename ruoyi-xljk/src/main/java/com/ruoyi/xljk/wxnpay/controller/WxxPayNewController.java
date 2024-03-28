@@ -32,7 +32,7 @@ import java.util.Map;
  */
 
 @CrossOrigin
-@RequestMapping("api/wxx-pay/")
+@RequestMapping("xljk/wxx-pay/")
 @Slf4j
 @RestController
 @Api(tags = "微信小程序支付")
