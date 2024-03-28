@@ -27,6 +27,6 @@ public class JsapiPayDto {
     private String testName;
 
     /** 测试时间 */
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date testTime;
 }

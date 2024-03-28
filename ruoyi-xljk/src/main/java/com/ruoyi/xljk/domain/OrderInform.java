@@ -1,5 +1,6 @@
 package com.ruoyi.xljk.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
@@ -42,7 +43,7 @@ public class OrderInform {
 
     @Column(name = "test_name")
     private String testName;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "test_time")
     private Date testTime;
 
