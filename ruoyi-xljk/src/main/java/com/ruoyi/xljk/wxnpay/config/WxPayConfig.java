@@ -40,7 +40,7 @@ import java.security.PrivateKey;
 @Configuration
 @PropertySource("classpath:wxpaynew.properties") //读取配置文件
 @ConfigurationProperties(prefix="wxpaynew") //读取wxpay节点
-@Data //使用set方法将wxpay节点中的值填充到当前类的属性中
+//@Data //使用set方法将wxpay节点中的值填充到当前类的属性中
 public class WxPayConfig implements Serializable {
     // 商户号
     private String mchId;
@@ -65,6 +65,84 @@ public class WxPayConfig implements Serializable {
 
     // 接收结果通知地址
     private String notifyDomain;
+
+    public String getMchId() {
+        return mchId;
+    }
+
+    public void setMchId(String mchId) {
+        this.mchId = mchId;
+    }
+
+    public String getMchSerialNo() {
+        return mchSerialNo;
+    }
+
+    public void setMchSerialNo(String mchSerialNo) {
+        this.mchSerialNo = mchSerialNo;
+    }
+
+    public String getPrivateKeyPath() {
+        return privateKeyPath;
+    }
+
+    public void setPrivateKeyPath(String privateKeyPath) {
+        this.privateKeyPath = privateKeyPath;
+    }
+
+    public String getApiV3Key() {
+        return apiV3Key;
+    }
+
+    public void setApiV3Key(String apiV3Key) {
+        this.apiV3Key = apiV3Key;
+    }
+
+    public String getAppid() {
+        return appid;
+    }
+
+    public void setAppid(String appid) {
+        this.appid = appid;
+    }
+
+    public String getXcxAppid() {
+        return xcxAppid;
+    }
+
+    public void setXcxAppid(String xcxAppid) {
+        this.xcxAppid = xcxAppid;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getNotifyDomain() {
+        return notifyDomain;
+    }
+
+    public void setNotifyDomain(String notifyDomain) {
+        this.notifyDomain = notifyDomain;
+    }
+
+    @Override
+    public String toString() {
+        return "WxPayConfig{" +
+                "mchId='" + mchId + '\'' +
+                ", mchSerialNo='" + mchSerialNo + '\'' +
+                ", privateKeyPath='" + privateKeyPath + '\'' +
+                ", apiV3Key='" + apiV3Key + '\'' +
+                ", appid='" + appid + '\'' +
+                ", xcxAppid='" + xcxAppid + '\'' +
+                ", domain='" + domain + '\'' +
+                ", notifyDomain='" + notifyDomain + '\'' +
+                '}';
+    }
 
     /**
      * 获取商户私钥文件
