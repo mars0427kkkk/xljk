@@ -458,7 +458,8 @@ public class QuestionAnswerController extends BaseController
         return success(list1);
     }
     private boolean areAllValuesEqual(Map<String, String> map) {
-
+        String keyToRemove = "openid";
+        map.remove(keyToRemove);
         String firstValue = null;
         for (String value : map.values()) {
             if (firstValue == null) {
