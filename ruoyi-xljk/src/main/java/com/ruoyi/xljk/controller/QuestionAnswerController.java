@@ -457,7 +457,7 @@ public class QuestionAnswerController extends BaseController
 
         answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
         AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
-        stuposiVo9.setAnswer(String.valueOf(answerLocalhost1.getTestTime()));
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
         stuposiVo9.setName(answerLocalhost1.getTestName());
         list1.add(stuposiVo9);
         return success(list1);
@@ -882,7 +882,7 @@ public class QuestionAnswerController extends BaseController
 
         answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
         AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
-        stuposiVo15.setAnswer(String.valueOf(answerLocalhost1.getTestTime()));
+        stuposiVo15.setTestTime(answerLocalhost1.getTestTime());
         stuposiVo15.setAnswer(answerLocalhost1.getTestName());
         list1.add(stuposiVo15);
         return success(list1);
