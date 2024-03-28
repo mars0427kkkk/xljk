@@ -11,10 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="openid"    column="openid"    />
         <result property="answer"    column="answer"    />
         <result property="answerNum"    column="answer_num"    />
+        <result property="status"    column="status"    />
     </resultMap>
 
     <sql id="selectAnswerLocalhostVo">
-        select id, test_name, test_time, openid, answer, answer_num from answer_localhost
+        select id, test_name, test_time, openid, answer, answer_num ,status from answer_localhost
     </sql>
 
     <select id="selectAnswerLocalhostList" parameterType="AnswerLocalhost" resultMap="AnswerLocalhostResult">
@@ -25,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="openid != null  and openid != ''"> and openid = #{openid}</if>
             <if test="answer != null  and answer != ''"> and answer = #{answer}</if>
             <if test="answerNum != null  and answerNum != ''"> and answer_num = #{answerNum}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
         </where>
     </select>
     
@@ -41,8 +43,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="openid != null  and openid != ''"> and openid = #{openid}</if>
             <if test="answer != null  and answer != ''"> and answer = #{answer}</if>
             <if test="answerNum != null  and answerNum != ''"> and answer_num = #{answerNum}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
         </where>
         GROUP BY test_name
+    </select>
+    <select id="selectAnswerLocalhostByOpenId" resultType="com.ruoyi.xljk.domain.AnswerLocalhost">
+        <include refid="selectAnswerLocalhostVo"/>
+        where openid = #{openid}
     </select>
 
 
@@ -54,6 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="openid != null">openid,</if>
             <if test="answer != null">answer,</if>
             <if test="answerNum != null">answer_num,</if>
+            <if test="status != null">status,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="testName != null">#{testName},</if>
@@ -61,6 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="openid != null">#{openid},</if>
             <if test="answer != null">#{answer},</if>
             <if test="answerNum != null">#{answerNum},</if>
+            <if test="status != null">#{status},</if>
          </trim>
     </insert>
 
@@ -72,6 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="openid != null">openid = #{openid},</if>
             <if test="answer != null">answer = #{answer},</if>
             <if test="answerNum != null">answer_num = #{answerNum},</if>
+            <if test="status != null">status = #{status},</if>
         </trim>
         where id = #{id}
     </update>

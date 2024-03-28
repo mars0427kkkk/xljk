@@ -61,4 +61,6 @@ public interface AnswerLocalhostMapper
 
 
     List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
+
+   public AnswerLocalhost selectAnswerLocalhostByOpenId(String openId);
 }

@@ -23,6 +23,11 @@ public class AnswerLocalhostServiceImpl implements IAnswerLocalhostService
     @Autowired
     private AnswerLocalhostMapper answerLocalhostMapper;
 
+    @Override
+    public AnswerLocalhost findByOpenid(String openId) {
+        return answerLocalhostMapper.selectAnswerLocalhostByOpenId(openId);
+    }
+
     /**
      * 查询【请填写功能名称】
      * 

@@ -12,6 +12,8 @@ import com.ruoyi.xljk.domain.QuestionAnswer;
  */
 public interface IAnswerLocalhostService 
 {
+    public AnswerLocalhost findByOpenid(String openId);
+
     /**
      * 查询【请填写功能名称】
      * 

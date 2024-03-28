@@ -19,6 +19,7 @@ public class AnswerLocalhost extends BaseEntity
 
     /** $column.columnComment */
     private Long id;
+    private Long status;
 
     /** 测试名称 */
     @Excel(name = "测试名称")
@@ -98,6 +99,14 @@ public class AnswerLocalhost extends BaseEntity
         return answerNum;
     }
 
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -107,6 +116,7 @@ public class AnswerLocalhost extends BaseEntity
             .append("openid", getOpenid())
             .append("answer", getAnswer())
             .append("answerNum", getAnswerNum())
+            .append("status", getStatus())
             .toString();
     }
 }

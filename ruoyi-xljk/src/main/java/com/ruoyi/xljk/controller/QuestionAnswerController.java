@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.xljk.domain.AnswerLocalhost;
@@ -14,6 +15,7 @@ import com.ruoyi.xljk.domain.Vo.nameVo;
 import com.ruoyi.xljk.domain.positiveNature;
 import com.ruoyi.xljk.service.IAnswerLocalhostService;
 import com.ruoyi.xljk.service.ISysFileInfoService;
+import com.sun.net.httpserver.Authenticator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -455,10 +457,28 @@ public class QuestionAnswerController extends BaseController
         answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
         return success(list1);
     }
+    private boolean areAllValuesEqual(Map<String, String> map) {
+
+        String firstValue = null;
+        for (String value : map.values()) {
+            if (firstValue == null) {
+                firstValue = value;
+            } else if (!firstValue.equals(value)) {
+                return false; // 发现一个与第一个值不同的值，返回false
+            }
+        }
+
+        return true; // 所有值都与第一个值相同
+    }
     @ApiOperation("积极心理")
     @PostMapping ("/stuposi")
     public AjaxResult stuposilist(@RequestBody List<homeVo> stuposi){
         Map<String, String> resultMap = convertListToMap(stuposi);
+        boolean allValuesEqual = areAllValuesEqual(resultMap);
+
+        if (allValuesEqual) {
+            return success("不行");
+        }
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
         for (homeVo vo : stuposi) {
