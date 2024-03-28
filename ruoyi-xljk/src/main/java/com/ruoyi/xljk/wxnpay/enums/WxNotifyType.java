@@ -15,7 +15,7 @@ public enum WxNotifyType {
 	/**
 	 * 无心小程序支付通知  /api/wxx-pay/native/notify
 	 */
-	WXX_JSAPI_NOTIFY("/api/wxx-pay/native/notify"),
+	WXX_JSAPI_NOTIFY("/xljk/wxx-pay/native/notify"),
 
 
 	/**

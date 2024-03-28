@@ -24,13 +24,15 @@ public class OrderInform {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
+    @Column(name = "open_id")
 
     private String openId;
 
     private Boolean flags;
+    @Column(name = "order_id")
 
     private String orderId;
-
+    @Column(name = "prepay_id")
     private String prepayId;
 
     private double money;
@@ -38,9 +40,10 @@ public class OrderInform {
     @Column(name = "describe_info")
     private String describeInfo;
 
+    @Column(name = "create_time")
     @CreatedDate
     private Date createTime;
-
+    @Column(name = "update_time")
     @LastModifiedDate
     private Date updateTime;
 }
