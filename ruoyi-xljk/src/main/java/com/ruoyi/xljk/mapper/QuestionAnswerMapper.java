@@ -66,4 +66,6 @@ public interface QuestionAnswerMapper
     public int selectQuestionAnswers(@Param("name") Long name, @Param("type") String type);
 
     public  int selectQuestionSAnswer(@Param("name") Long name, @Param("type") String type);
+
+    public  int selectQuestionhappySAnswer(@Param("name") Long name, @Param("type") String type);
 }

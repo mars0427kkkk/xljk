@@ -106,6 +106,183 @@ public class QuestionAnswerController extends BaseController
         return success(list);
     }
 
+    @ApiOperation("幸福感")
+    @PostMapping ("/happy")
+    public AjaxResult happylist(@RequestBody List<homeVo> stuposi){
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        boolean allValuesEqual = areAllValuesEqual(resultMap);
+
+        if (allValuesEqual) {
+            return success("不行");
+        }
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (homeVo vo : stuposi) {
+            String name = vo.getType();
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(name)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(name, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+        stuposiVo stuposiVo10 = new stuposiVo();
+        stuposiVo stuposiVo11 = new stuposiVo();
+        stuposiVo stuposiVo12 = new stuposiVo();
+        stuposiVo stuposiVo13 = new stuposiVo();
+        stuposiVo stuposiVo14 = new stuposiVo();
+        stuposiVo stuposiVo15 = new stuposiVo();
+        list.add("1");
+        list.add("6");
+        list.add("11");
+        list.add("16");
+        list.add("21");
+        int i = 0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionhappySAnswer(name, type);
+        }
+        stuposiVo.setName("积极情绪");
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(25L);
+            stuposiVo.setAnswer("积极情绪(positive emotions)。包括快乐、满足、希望等，有助于应对挑战和提高创新能力，，；这些情绪能够推动人们去追求良好的结果，进一步调动人们的积极性。");
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("2");
+        list.add("7");
+        list.add("12");
+        list.add("17");
+        list.add("22");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionhappySAnswer(name, type);
+        }
+        stuposiVo1.setName("投入");
+        stuposiVo1.setType((long) i);
+        stuposiVo1.setNum(25L);
+
+        stuposiVo1.setAnswer("正向的投入(engagement)。指全身心投入到某项活动中时体验到的状态，也被称为“心流”，让人们忘记自我，只关注手头的任务；也是指不仅仅把工作当成饭碗，而要当成实现自我价值的平台。");
+
+        list1.add(stuposiVo1);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("3");
+        list.add("8");
+        list.add("13");
+        list.add("18");
+        list.add("23");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionhappySAnswer(name, type);
+        }
+        stuposiVo2.setName("关系");
+        stuposiVo2.setType((long) i);
+        stuposiVo2.setNum(25L);
+
+        stuposiVo2.setAnswer("和谐的关系(relationships)。人是社会性动物，需要与他人建立和谐的人际关系以获取支持和归属感；用良好的心态去面对工作中的每一个人也有助于提升组织氛围。");
+
+        list1.add(stuposiVo2);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("4");
+        list.add("9");
+        list.add("14");
+        list.add("19");
+        list.add("24");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionhappySAnswer(name, type);
+        }
+        stuposiVo3.setName("意义");
+        stuposiVo3.setType((long) i);
+        stuposiVo3.setNum(25L);
+
+        stuposiVo3.setAnswer("意义(meaning)。指的是人们认为自己的工作和生活有目标、有价值；找到工作的意义所在能够为工作带来动力和目标感。");
+
+        list1.add(stuposiVo3);
+        list.clear();
+        //stuposiVo = null;
+        i = 0;
+        list.add("5");
+        list.add("10");
+        list.add("15");
+        list.add("20");
+        list.add("25");
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionhappySAnswer(name, type);
+        }
+        stuposiVo4.setName("成就");
+        stuposiVo4.setType((long) i);
+        stuposiVo4.setNum(25L);
+
+        stuposiVo4.setAnswer("成就(accomplishment)。这是人们在追求目标过程中取得的重要成果或成功经历所带来的满足感与自豪感等方面体验。");
+
+        list1.add(stuposiVo4);
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("青少年积极心理品质");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo15.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo15.setAnswer(answerLocalhost1.getTestName());
+        list1.add(stuposiVo15);
+        return success(list1);
+    }
     @ApiOperation("积极心理")
     @PostMapping ("/stuposis")
     public AjaxResult stuposislist(@RequestBody List<homeVo> stuposi){
@@ -174,7 +351,7 @@ public class QuestionAnswerController extends BaseController
         for (String s: list) {
             String name = s;
             String type = resultMap.get(name);
-             i += questionAnswerService.selectQuestionAnswers(name, type);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo.setName("生命动力");
         stuposiVo.setType((long) i);

@@ -21,6 +21,7 @@ public interface IQuestionAnswerService
 
     public int selectQuestionAnswer(String name,String type);
     public int selectQuestionSAnswer(String name,String type);
+    public int selectQuestionhappySAnswer(String name,String type);
     public int selectQuestionAnswers(String name,String type);
 
     /**
