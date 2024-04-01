@@ -272,7 +272,7 @@ public class QuestionAnswerController extends BaseController
         String string = list1.toString();
         String s = resultMap.get("openid");
         answerLocalhost.setOpenid(s);
-        answerLocalhost.setTestName("青少年积极心理品质");
+        answerLocalhost.setTestName("主观幸福感");
         answerLocalhost.setAnswer(string);
         answerLocalhost.setAnswerNum(occurrencesString);
 
