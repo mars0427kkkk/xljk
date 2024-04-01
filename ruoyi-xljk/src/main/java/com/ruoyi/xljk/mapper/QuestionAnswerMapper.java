@@ -64,4 +64,6 @@ public interface QuestionAnswerMapper
     List<QuestionAnswer> selectQuestionAnswerNameList(String type);
 
     public int selectQuestionAnswers(@Param("name") Long name, @Param("type") String type);
+
+    public  int selectQuestionSAnswer(@Param("name") Long name, @Param("type") String type);
 }

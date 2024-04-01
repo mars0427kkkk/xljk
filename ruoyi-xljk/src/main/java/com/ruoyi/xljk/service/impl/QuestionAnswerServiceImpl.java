@@ -38,6 +38,12 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService
     }
 
     @Override
+    public int selectQuestionSAnswer(String names, String type) {
+        Long name = Long.parseLong(names);
+        return questionAnswerMapper.selectQuestionSAnswer(name,type);
+    }
+
+    @Override
     public int selectQuestionAnswers(String names, String type) {
         Long name = Long.parseLong(names);
         return questionAnswerMapper.selectQuestionAnswers(name,type);

@@ -480,6 +480,97 @@ public class QuestionAnswerController extends BaseController
         map.put(keyToRemove,s);
         return true; // 所有值都与第一个值相同
     }
+    @ApiOperation("压力测评")
+    @PostMapping ("/stress")
+    public AjaxResult stresslist(@RequestBody List<homeVo> stuposi){
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        boolean allValuesEqual = areAllValuesEqual(resultMap);
+
+        if (allValuesEqual) {
+            return success("不行");
+        }
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (homeVo vo : stuposi) {
+            String name = vo.getType();
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(name)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(name, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+
+        stuposiVo stuposiVo15 = new stuposiVo();
+      int i = 0;
+        for (homeVo s: stuposi) {
+            String name = s.getName();
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionSAnswer(name, type);
+        }
+        stuposiVo.setType((long) i);
+        stuposiVo.setNum(20L);
+
+        if (i>= 17){
+            stuposiVo.setName("超高压力");
+//            stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。乐观者更习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！\n" +
+//                    "乐观者更愿意面向未来的思考，采取积极行动，不随波逐流。需要注意乐观希望不是自欺欺人的逃避，面向未来的同时需要注意当下能够付出不亚于任何人的努力。");
+        }else if (i>= 13 && i<= 16){
+            stuposiVo.setName("高压力");
+//            stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。所以，要想成为一个乐观的人，要习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！");
+        }else if (i>= 9 && i<= 12){
+            stuposiVo.setName("中压力");
+//            stuposiVo.setAnswer("高乐观希望者在生活中总能以正向的角度看待事物与未来，期待未来会更好，并愿为之努力。在生活中习惯用积极的视角看待生活，遇到困难总是优先看到事件中有利的部分。有着乐观希望品质的人能够积极的解释发生在自己身边的事情，遇事不会自怨自艾，采用“问题为中心”的策略来调整情绪，解决问题");
+        }else {
+            stuposiVo.setName("低压力");
+        }
+        list1.add(stuposiVo);
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("压力");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo15.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo15.setAnswer(answerLocalhost1.getTestName());
+        list1.add(stuposiVo15);
+        return success(list1);
+    }
     @ApiOperation("积极心理")
     @PostMapping ("/stuposi")
     public AjaxResult stuposilist(@RequestBody List<homeVo> stuposi){

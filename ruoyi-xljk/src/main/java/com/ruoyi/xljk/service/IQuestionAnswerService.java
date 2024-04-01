@@ -20,6 +20,7 @@ public interface IQuestionAnswerService
     public QuestionAnswer selectQuestionAnswerById(Long id);
 
     public int selectQuestionAnswer(String name,String type);
+    public int selectQuestionSAnswer(String name,String type);
     public int selectQuestionAnswers(String name,String type);
 
     /**
