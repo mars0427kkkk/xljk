@@ -12,16 +12,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectSheet1Vo">
-        select title, time, text, from from Sheet1
+        select title, `time`, text, `from` from Sheet1
     </sql>
 
     <select id="selectSheet1List" parameterType="Sheet1" resultMap="Sheet1Result">
         <include refid="selectSheet1Vo"/>
         <where>  
             <if test="title != null  and title != ''"> and title = #{title}</if>
-            <if test="time != null  and time != ''"> and time = #{time}</if>
+            <if test="time != null  and time != ''"> and `time` = #{time}</if>
             <if test="text != null  and text != ''"> and text = #{text}</if>
-            <if test="from != null  and from != ''"> and from = #{from}</if>
+            <if test="from != null  and from != ''"> and `from` = #{from}</if>
         </where>
     </select>
     
@@ -34,9 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into Sheet1
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="title != null">title,</if>
-            <if test="time != null">time,</if>
+            <if test="time != null">`time`,</if>
             <if test="text != null">text,</if>
-            <if test="from != null">from,</if>
+            <if test="from != null">`from`,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="title != null">#{title},</if>
