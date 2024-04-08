@@ -46,7 +46,7 @@ public class Sheet1Controller extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(Sheet1 sheet1)
     {
-        startPage();
+//        startPage();
         List<Sheet1> list = sheet1Service.selectSheet1List(sheet1);
         return getDataTable(list);
     }

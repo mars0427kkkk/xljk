@@ -46,7 +46,7 @@ public class ZjsdController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(Zjsd zjsd)
     {
-        startPage();
+//        startPage();
         List<Zjsd> list = zjsdService.selectZjsdList(zjsd);
         return getDataTable(list);
     }
