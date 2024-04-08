@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xljk.mapper.ZjsdMapper">
+    
+    <resultMap type="Zjsd" id="ZjsdResult">
+        <result property="title"    column="title"    />
+        <result property="time"    column="time"    />
+        <result property="text"    column="text"    />
+    </resultMap>
+
+    <sql id="selectZjsdVo">
+        select title, time, text from zjsd
+    </sql>
+
+    <select id="selectZjsdList" parameterType="Zjsd" resultMap="ZjsdResult">
+        <include refid="selectZjsdVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="time != null  and time != ''"> and time = #{time}</if>
+            <if test="text != null  and text != ''"> and text = #{text}</if>
+        </where>
+    </select>
+    
+    <select id="selectZjsdByTitle" parameterType="String" resultMap="ZjsdResult">
+        <include refid="selectZjsdVo"/>
+        where title = #{title}
+    </select>
+        
+    <insert id="insertZjsd" parameterType="Zjsd">
+        insert into zjsd
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null">title,</if>
+            <if test="time != null">time,</if>
+            <if test="text != null">text,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null">#{title},</if>
+            <if test="time != null">#{time},</if>
+            <if test="text != null">#{text},</if>
+         </trim>
+    </insert>
+
+    <update id="updateZjsd" parameterType="Zjsd">
+        update zjsd
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="time != null">time = #{time},</if>
+            <if test="text != null">text = #{text},</if>
+        </trim>
+        where title = #{title}
+    </update>
+
+    <delete id="deleteZjsdByTitle" parameterType="String">
+        delete from zjsd where title = #{title}
+    </delete>
+
+    <delete id="deleteZjsdByTitles" parameterType="String">
+        delete from zjsd where title in 
+        <foreach item="title" collection="array" open="(" separator="," close=")">
+            #{title}
+        </foreach>
+    </delete>
+</mapper>
