@@ -715,7 +715,11 @@ public class QuestionAnswerController extends BaseController
         stuposiVo stuposiVo15 = new stuposiVo();
       int i = 0;
         for (homeVo s: stuposi) {
+
             String name = s.getName();
+            if (name.equals("openid")){
+                break;
+            }
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionSAnswer(name, type);
         }
