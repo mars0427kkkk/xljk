@@ -110,6 +110,7 @@ public class QuestionAnswerController extends BaseController
     @PostMapping ("/happy")
     public AjaxResult happylist(@RequestBody List<homeVo> stuposi){
         Map<String, String> resultMap = convertListToMap(stuposi);
+        //检查选项是否一致
         boolean allValuesEqual = areAllValuesEqual(resultMap);
 
         if (allValuesEqual) {
@@ -286,6 +287,7 @@ public class QuestionAnswerController extends BaseController
     @ApiOperation("积极心理")
     @PostMapping ("/stuposis")
     public AjaxResult stuposislist(@RequestBody List<homeVo> stuposi){
+        //映射map
         Map<String, String> resultMap = convertListToMap(stuposi);
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
