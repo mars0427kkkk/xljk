@@ -98,6 +98,36 @@ public class SysUser extends BaseEntity
 
     /** 角色ID */
     private Long roleId;
+    @Excel(name = "学生姓名")
+    private String name;
+
+    /** $column.columnComment */
+    @Excel(name = "年龄")
+    private Long age;
+
+    /** $column.columnComment */
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String gender;
+
+    /** $column.columnComment */
+    @Excel(name = "用户身份")
+    private String identity;
+
+    /** $column.columnComment */
+    @Excel(name = "学校名字")
+    private String schoolName;
+
+    /** $column.columnComment */
+    @Excel(name = "年级")
+    private String grade;
+
+    /** $column.columnComment */
+    @Excel(name = "班级")
+    private String classes;
+
+    /** $column.columnComment */
+    @Excel(name = "学号")
+    private String idCardNumber;
 
     public SysUser()
     {
@@ -205,6 +235,77 @@ public class SysUser extends BaseEntity
     public void setAvatar(String avatar)
     {
         this.avatar = avatar;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setAge(Long age)
+    {
+        this.age = age;
+    }
+
+    public Long getAge()
+    {
+        return age;
+    }
+    public void setGender(String gender)
+    {
+        this.gender = gender;
+    }
+
+    public String getGender()
+    {
+        return gender;
+    }
+    public void setIdentity(String identity)
+    {
+        this.identity = identity;
+    }
+
+    public String getIdentity()
+    {
+        return identity;
+    }
+    public void setSchoolName(String schoolName)
+    {
+        this.schoolName = schoolName;
+    }
+
+    public String getSchoolName()
+    {
+        return schoolName;
+    }
+    public void setGrade(String grade)
+    {
+        this.grade = grade;
+    }
+
+    public String getGrade()
+    {
+        return grade;
+    }
+    public void setClasses(String classes)
+    {
+        this.classes = classes;
+    }
+
+    public String getClasses()
+    {
+        return classes;
+    }
+    public void setIdCardNumber(String idCardNumber)
+    {
+        this.idCardNumber = idCardNumber;
+    }
+
+    public String getIdCardNumber()
+    {
+        return idCardNumber;
     }
 
     public String getPassword()
@@ -330,6 +431,14 @@ public class SysUser extends BaseEntity
             .append("remark", getRemark())
             .append("dept", getDept())
             .append("openId", getOpenId())
+            .append("name", getName())
+            .append("age", getAge())
+            .append("gender", getGender())
+            .append("identity", getIdentity())
+            .append("schoolName", getSchoolName())
+            .append("grade", getGrade())
+            .append("classes", getClasses())
+            .append("idCardNumber", getIdCardNumber())
             .toString();
     }
 }

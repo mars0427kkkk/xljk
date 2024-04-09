@@ -24,6 +24,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="updateTime"   column="update_time"  />
         <result property="remark"       column="remark"       />
         <result property="openId"       column="open_id"       />
+		<result property="name"    column="name"    />
+		<result property="age"    column="age"    />
+		<result property="gender"    column="gender"    />
+		<result property="identity"    column="identity"    />
+		<result property="schoolName"    column="schoolName"    />
+		<result property="grade"    column="grade"    />
+		<result property="classes"    column="classes"    />
+		<result property="idCardNumber"    column="idCardNumber"    />
         <association property="dept"    javaType="SysDept"         resultMap="deptResult" />
         <collection  property="roles"   javaType="java.util.List"  resultMap="RoleResult" />
     </resultMap>
@@ -160,6 +168,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="password != null and password != ''">password,</if>
  			<if test="status != null and status != ''">status,</if>
  			<if test="openId != null and openId != ''">open_id,</if>
+		    <if test="name != null">`name`,</if>
+		    <if test="age != null">age,</if>
+		   <if test="gender != null">gender,</if>
+		   <if test="identity != null">identity,</if>
+		   <if test="schoolName != null">schoolName,</if>
+		  <if test="grade != null">grade,</if>
+		  <if test="classes != null">classes,</if>
+		  <if test="idCardNumber != null">idCardNumber,</if>
  			<if test="createBy != null and createBy != ''">create_by,</if>
  			<if test="remark != null and remark != ''">remark,</if>
  			create_time
@@ -175,6 +191,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="password != null and password != ''">#{password},</if>
  			<if test="status != null and status != ''">#{status},</if>
  			<if test="openId != null and openId != ''">#{openId},</if>
+		<if test="name != null">#{name},</if>
+		<if test="age != null">#{age},</if>
+		<if test="gender != null">#{gender},</if>
+		<if test="identity != null">#{identity},</if>
+		<if test="schoolName != null">#{schoolName},</if>
+		<if test="grade != null">#{grade},</if>
+		<if test="classes != null">#{classes},</if>
+		<if test="idCardNumber != null">#{idCardNumber},</if>
  			<if test="createBy != null and createBy != ''">#{createBy},</if>
  			<if test="remark != null and remark != ''">#{remark},</if>
  			sysdate()
@@ -196,6 +220,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="openId != null and openId != ''">open_id = #{openId},</if>
  			<if test="loginIp != null and loginIp != ''">login_ip = #{loginIp},</if>
  			<if test="loginDate != null">login_date = #{loginDate},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="age != null">age = #{age},</if>
+			<if test="gender != null">gender = #{gender},</if>
+			<if test="identity != null">identity = #{identity},</if>
+			<if test="schoolName != null">schoolName = #{schoolName},</if>
+			<if test="grade != null">grade = #{grade},</if>
+			<if test="classes != null">classes = #{classes},</if>
+			<if test="idCardNumber != null">idCardNumber = #{idCardNumber},</if>
  			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
  			<if test="remark != null">remark = #{remark},</if>
  			update_time = sysdate()
