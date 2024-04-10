@@ -134,6 +134,29 @@ public class SysUser extends BaseEntity
     @Excel(name = "学号")
     private String idCardNumber;
 
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String parentEduBack;
+
+    /** $column.columnComment */
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String teacherIsMarry;
+
+    /** $column.columnComment */
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String teacherEduBack;
+
+    /** $column.columnComment */
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String workAddress;
+
+    /** $column.columnComment */
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String officalIsMarry;
+
+    /** $column.columnComment */
+//    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    private String officalEduBack;
+
     public SysUser()
     {
 
@@ -312,6 +335,60 @@ public class SysUser extends BaseEntity
     {
         return idCardNumber;
     }
+    public void setParentEduBack(String parentEduBack)
+    {
+        this.parentEduBack = parentEduBack;
+    }
+
+    public String getParentEduBack()
+    {
+        return parentEduBack;
+    }
+    public void setTeacherIsMarry(String teacherIsMarry)
+    {
+        this.teacherIsMarry = teacherIsMarry;
+    }
+
+    public String getTeacherIsMarry()
+    {
+        return teacherIsMarry;
+    }
+    public void setTeacherEduBack(String teacherEduBack)
+    {
+        this.teacherEduBack = teacherEduBack;
+    }
+
+    public String getTeacherEduBack()
+    {
+        return teacherEduBack;
+    }
+    public void setWorkAddress(String workAddress)
+    {
+        this.workAddress = workAddress;
+    }
+
+    public String getWorkAddress()
+    {
+        return workAddress;
+    }
+    public void setOfficalIsMarry(String officalIsMarry)
+    {
+        this.officalIsMarry = officalIsMarry;
+    }
+
+    public String getOfficalIsMarry()
+    {
+        return officalIsMarry;
+    }
+    public void setOfficalEduBack(String officalEduBack)
+    {
+        this.officalEduBack = officalEduBack;
+    }
+
+    public String getOfficalEduBack()
+    {
+        return officalEduBack;
+    }
 
     public String getPassword()
     {
@@ -444,6 +521,12 @@ public class SysUser extends BaseEntity
             .append("grade", getGrade())
             .append("classes", getClasses())
             .append("idCardNumber", getIdCardNumber())
+            .append("parentEduBack", getParentEduBack())
+            .append("teacherIsMarry", getTeacherIsMarry())
+            .append("teacherEduBack", getTeacherEduBack())
+            .append("workAddress", getWorkAddress())
+            .append("officalIsMarry", getOfficalIsMarry())
+            .append("officalEduBack", getOfficalEduBack())
             .toString();
     }
 }
