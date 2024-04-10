@@ -178,21 +178,21 @@ public class QuestionAnswerController extends BaseController
         list.add("11");
         list.add("16");
         list.add("21");
-        int i = 0;
+       Double i = 0.0;
         for (String s: list) {
             String name = s;
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionhappySAnswer(name, type);
         }
         stuposiVo.setName("积极情绪");
-        stuposiVo.setType((long) i);
+        stuposiVo.setType( i);
         stuposiVo.setNum(25L);
             stuposiVo.setAnswer("积极情绪(positive emotions)。包括快乐、满足、希望等，有助于应对挑战和提高创新能力，，；这些情绪能够推动人们去追求良好的结果，进一步调动人们的积极性。");
 
         list1.add(stuposiVo);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("2");
         list.add("7");
         list.add("12");
@@ -204,7 +204,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionhappySAnswer(name, type);
         }
         stuposiVo1.setName("投入");
-        stuposiVo1.setType((long) i);
+        stuposiVo1.setType(i);
         stuposiVo1.setNum(25L);
 
         stuposiVo1.setAnswer("正向的投入(engagement)。指全身心投入到某项活动中时体验到的状态，也被称为“心流”，让人们忘记自我，只关注手头的任务；也是指不仅仅把工作当成饭碗，而要当成实现自我价值的平台。");
@@ -212,7 +212,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo1);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("3");
         list.add("8");
         list.add("13");
@@ -224,7 +224,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionhappySAnswer(name, type);
         }
         stuposiVo2.setName("关系");
-        stuposiVo2.setType((long) i);
+        stuposiVo2.setType( i);
         stuposiVo2.setNum(25L);
 
         stuposiVo2.setAnswer("和谐的关系(relationships)。人是社会性动物，需要与他人建立和谐的人际关系以获取支持和归属感；用良好的心态去面对工作中的每一个人也有助于提升组织氛围。");
@@ -232,7 +232,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo2);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i =0.0;
         list.add("4");
         list.add("9");
         list.add("14");
@@ -244,7 +244,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionhappySAnswer(name, type);
         }
         stuposiVo3.setName("意义");
-        stuposiVo3.setType((long) i);
+        stuposiVo3.setType( i);
         stuposiVo3.setNum(25L);
 
         stuposiVo3.setAnswer("意义(meaning)。指的是人们认为自己的工作和生活有目标、有价值；找到工作的意义所在能够为工作带来动力和目标感。");
@@ -252,7 +252,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo3);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i =0.0;
         list.add("5");
         list.add("10");
         list.add("15");
@@ -264,7 +264,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionhappySAnswer(name, type);
         }
         stuposiVo4.setName("成就");
-        stuposiVo4.setType((long) i);
+        stuposiVo4.setType( i);
         stuposiVo4.setNum(25L);
 
         stuposiVo4.setAnswer("成就(accomplishment)。这是人们在追求目标过程中取得的重要成果或成功经历所带来的满足感与自豪感等方面体验。");
@@ -349,14 +349,14 @@ public class QuestionAnswerController extends BaseController
         list.add("15");
         list.add("20");
         list.add("23");
-        int i = 0;
+        Double i =0.0;
         for (String s: list) {
             String name = s;
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo.setName("生命动力");
-        stuposiVo.setType((long) i);
+        stuposiVo.setType(i);
         stuposiVo.setNum(32L);
         if (i <= 6){
             stuposiVo.setAnswer("日常生活中，可能表现为独立性差，较少按照自己的想法或意愿做事；从属性强，缺乏主观能动性，生活中体验到的幸福感也不是很强，偶尔可能会出现抑郁情绪。建议家长从孩子的情绪感受入手，加深沟通交流，尽可能共情孩子，引导孩子逐步恢复对生活的兴趣和热爱。");
@@ -381,7 +381,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i =0.0;
         list.add("5");
         list.add("8");
         list.add("9");
@@ -397,7 +397,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo3.setName("学习动力");
-        stuposiVo3.setType((long) i);
+        stuposiVo3.setType( i);
         stuposiVo3.setNum(32L);
         if (i <= 6){
             stuposiVo3.setAnswer("日常生活中， 可能表现为与同伴相比，更容易对学习感到厌烦，学习意愿和对学习的自信都非常欠缺，或许已经产生了比较明显的厌学表现，如：不相信自己能够通过努力获得较好的学习成绩，对学习有强烈的抵触情绪，产生回避学习的行为，甚至旷课、休学等。建议家长首先安顿好自己的焦虑情绪，以稳定的状态去面对孩子，在生活中给孩子带来更多的鼓励和引导，协助孩子制定切实可行的学习目标，从小处着手，陪伴孩子一点一滴地进步，逐渐帮助孩子建立学习自信。");
@@ -421,7 +421,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo3);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i =0.0;
         list.add("2");
         list.add("6");
         list.add("11");
@@ -436,7 +436,7 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswers(name, type);
         }
         stuposiVo6.setName("关系动力");
-        stuposiVo6.setType((long) i);
+        stuposiVo6.setType( i);
         stuposiVo6.setNum(32L);
         if (i <= 6){
             stuposiVo6.setAnswer("日常生活中，可能表现为亲子之间存在问题，父母难以了解孩子的想法，孩子也较少向父母求助，很难从父母中获得想要的支持。孩子处理情绪问题的能力也比较差，换位思考能力较弱，较难融入集体，长此以往，容易出现厌学、辍学的倾向。建议家长从情绪感受入手，多倾听孩子的想法，一同构建安全、可信任的亲子和社交关系。");
@@ -460,7 +460,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo6);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("10");
         list.add("3");
         list.add("15");
@@ -473,7 +473,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo1.setName("独立性");
         stuposiVo1.setNum(16L);
         stuposiVo1.setAnswer("独立性指的是人的意志不易受他人的影响，有较强的独立提出和实施行为目的的能力，它反映了意志的行为价值的内在稳定性。遇事有主见，有成就动机，不依赖他人就能独立处理事情，积极主动地完成各项实际工作的心理品质，它伴随勇敢、自信、认真、专注、责任感和不怕困难的精神。");
-        stuposiVo1.setType((long) i);
+        stuposiVo1.setType( i);
 
 //        stuposiVo1.setNum(25L);
 //        int i2 = i / 25;
@@ -487,7 +487,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo1);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("20");
         list.add("4");
         list.add("1");
@@ -500,7 +500,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo2.setName("幸福感");
         stuposiVo2.setNum(16L);
         stuposiVo2.setAnswer("幸福感，又称主观幸福感（Subjective Well-Being，简称SWB），主要是指人们对其生活质量所做的情感性和认知性的整体评价。在这种意义上，决定人们是否幸福的并不是实际发生了什么，关键是人们对所发生的事情在情绪上做出何种解释，在认知上进行怎样的加工。");
-        stuposiVo2.setType((long) i);
+        stuposiVo2.setType( i);
 //        stuposiVo2.setNum(30L);
 //        int i3 = i / 30;
 //        if (i3 >= 0.76){
@@ -522,7 +522,7 @@ public class QuestionAnswerController extends BaseController
 
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("24");
         list.add("12");
         list.add("25");
@@ -535,7 +535,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo4.setName("学习态度");
         stuposiVo4.setNum(16L);
         stuposiVo4.setAnswer("学习态度是指学习者对学习较为持久的肯定或否定的行为倾向或内部反应的准备状态。它通常可以从学生对待学习的注意状况、情绪状况和意志状态等方面加以判定和说明。");
-        stuposiVo4.setType((long) i);
+        stuposiVo4.setType( i);
 //        stuposiVo4.setNum(30L);
 //        int i5 = i / 30;
 //        if (i5 >= 0.76){
@@ -548,7 +548,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo4);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("8");
         list.add("16");
         list.add("9");
@@ -561,7 +561,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo5.setName("成就感");
         stuposiVo5.setNum(16L);
         stuposiVo5.setAnswer("成就感指一个人做完一件事情或者在做一件事情时，为自己所做的事情感到愉快或成功的感觉，即愿望与现实达到平衡产生的一种心理感受。");
-        stuposiVo5.setType((long) i);
+        stuposiVo5.setType( i);
 //        stuposiVo5.setNum(25L);
 //        int i6 = i / 25;
 //        if (i6 >= 0.76){
@@ -575,7 +575,7 @@ public class QuestionAnswerController extends BaseController
 
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("6");
         list.add("21");
         list.add("11");
@@ -588,7 +588,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo7.setName("亲子关系");
         stuposiVo7.setNum(16L);
         stuposiVo7.setAnswer("亲子关系是父母与子女之间的一种双向作用的人际关系。亲子关系是一个人最早建立起来的人际关系。父母的人品，对子女的教养、抚养、教育方式以及态度等，都在这种关系中直接对孩子的身心发展产生影响，也将影响子女今后的人际交往关系。亲子关系是个体和社会生活中重要的一部分，在青少年时期，亲子关系面临着打破重建的任务。");
-        stuposiVo7.setType((long) i);
+        stuposiVo7.setType( i);
 //        stuposiVo7.setNum(30L);
 //        int i8 = i / 30;
 //        if (i8 >= 0.76){
@@ -601,7 +601,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo7);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("17");
         list.add("18");
         list.add("2");
@@ -615,7 +615,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo8.setName("社交能力");
         stuposiVo8.setNum(16L);
         stuposiVo8.setAnswer("社交能力，指觉察他人情绪意向，有效地理解他人和善于同他人交际的能力，由人际感受力、人际理解力、合作与协调力等方面构成。青少年是一个自我意识和社会需求都不断成长的一个阶段，其社交特点开始慢慢趋近成人。");
-        stuposiVo8.setType((long) i);
+        stuposiVo8.setType( i);
 //        stuposiVo8.setNum(25L);
 //        int i9 = i / 25;
 //        if (i9 >= 0.76){
@@ -714,7 +714,7 @@ public class QuestionAnswerController extends BaseController
         stuposiVo stuposiVo1 = new stuposiVo();
 
         stuposiVo stuposiVo15 = new stuposiVo();
-      int i = 0;
+      Double i = 0.0;
         for (homeVo s: stuposi) {
 
             String name = s.getName();
@@ -724,7 +724,7 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionSAnswer(name, type);
         }
-        stuposiVo.setType((long) i);
+        stuposiVo.setType( i);
         stuposiVo.setNum(20L);
 
         if (i>= 17){
@@ -841,16 +841,16 @@ public class QuestionAnswerController extends BaseController
         list.add("25");
         list.add("37");
         list.add("49");
-        int i = 0;
+        Double i = 0.0;
         for (String s: list) {
             String name = s;
             String type = resultMap.get(name);
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo.setType((long) i);
+        stuposiVo.setType(i);
         stuposiVo.setNum(25L);
-        int i1 = i / 25;
+        Double i1 =  (i / 25);
         if (i1 >= 0.76){
             stuposiVo.setName("自我认知，乐观希望，高");
             stuposiVo.setAnswer("高乐观希望者的生活仿佛自带阳光滤镜，在遇到不同的情况时，总能保持良好的心态，拥有相信坏事会过去，阳光总会到来的积极心境。乐观者更习惯用积极的视角看待生活，优先看到事件中有利的部分。积极的生活状态带来健康的习惯和健康的身体，研究发现乐观希望品质突出的人更少生病哦！\n" +
@@ -865,7 +865,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("4");
         list.add("16");
         list.add("28");
@@ -877,9 +877,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo1.setType((long) i);
+        stuposiVo1.setType( i);
         stuposiVo1.setNum(25L);
-        int i2 = i / 25;
+       Double i2 =  (i / 25.0);
         if (i2 >= 0.76){
             stuposiVo1.setName("自我认知，自信悦纳，高");
             stuposiVo1.setAnswer("自信悦纳是一个人对自己是否有能力达成特定任务，如何善用所拥有技能的一种信念。高自信悦纳者，能够积极地评价自己并相信自己有能力把事情做好。社会适应良好，积极情感体验丰富，个人自主性强，自我认识清晰，善于应对批评或负面反馈。能够正确地评价自己、接纳自己，并在此基础上使自我得到良好的发展。");
@@ -893,7 +893,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo1);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("7");
         list.add("19");
         list.add("31");
@@ -906,9 +906,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo2.setType((long) i);
+        stuposiVo2.setType( i);
         stuposiVo2.setNum(30L);
-        int i3 = i / 30;
+        Double i3 = i / 30;
         if (i3 >= 0.76){
             stuposiVo2.setName("自我认知，自控力，高");
             stuposiVo2.setAnswer("在以下4个方面，高自控力者总是让人心生羡慕：\n" +
@@ -930,7 +930,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo2);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("10");
         list.add("22");
         list.add("34");
@@ -942,9 +942,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo3.setType((long) i);
+        stuposiVo3.setType( i);
         stuposiVo3.setNum(25L);
-        int i4 = i / 25;
+        Double i4 = i / 25;
         if (i4 >= 0.76){
             stuposiVo3.setName("自我认知，专注力，高");
             stuposiVo3.setAnswer("专注力高的人办事稳当妥帖。他们不会眼皮底下的东西都找不着，不会丢三落四。他们的作业写得仔细认真，考试时也很少出现漏题、丢词少句、漏看小数点等“马虎”问题。");
@@ -958,7 +958,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo3);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("2");
         list.add("14");
         list.add("26");
@@ -971,9 +971,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo4.setType((long) i);
+        stuposiVo4.setType( i);
         stuposiVo4.setNum(30L);
-        int i5 = i / 30;
+        Double i5 = i / 30;
         if (i5 >= 0.76){
             stuposiVo4.setName("社会协作，乐群合作，高");
             stuposiVo4.setAnswer("乐群合作者乐于在集体中发挥自己的能力，是团队中真诚可靠的伙伴。他们善于与人沟通合作，在集体中也往往更受欢迎和喜爱。对于人际关系中的矛盾和冲突，他们通常有适合的方法来化解，将团队凝聚起来发挥更大的力量。");
@@ -987,7 +987,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo4);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("5");
         list.add("17");
         list.add("29");
@@ -999,9 +999,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo5.setType((long) i);
+        stuposiVo5.setType( i);
         stuposiVo5.setNum(25L);
-        int i6 = i / 25;
+        Double i6 = i / 25;
         if (i6 >= 0.76){
             stuposiVo5.setName("社会协作，同理心，高");
             stuposiVo5.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
@@ -1015,7 +1015,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo5);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("8");
         list.add("20");
         list.add("32");
@@ -1028,9 +1028,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo6.setType((long) i);
+        stuposiVo6.setType( i);
         stuposiVo6.setNum(30L);
-        int i7 = i / 30;
+        Double i7 = i / 30;
         if (i7 >= 0.76){
             stuposiVo6.setName("社会协作，感恩利他，高");
             stuposiVo6.setAnswer("高感恩利他的人，对他人的恩惠常怀有感恩之心，常在明知没有回报的情况下，贡献自己的时间、精力、金钱等。这种感恩利他的品格，会让人更关注自己拥有什么，也更加愿意分享。当我们感谢我们所拥有的东西的时候，内心会充满一种满足、幸福、意义和仁爱之心。当我们将所拥有的东西分享给他人的时候，会获得激情、福流、信任、超越、意义感、归属感、安全感等一系列积极的情绪。");
@@ -1044,7 +1044,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo6);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("11");
         list.add("23");
         list.add("35");
@@ -1057,9 +1057,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo7.setType((long) i);
+        stuposiVo7.setType( i);
         stuposiVo7.setNum(30L);
-        int i8 = i / 30;
+        Double i8 = i / 30;
         if (i8 >= 0.76){
             stuposiVo7.setName("社会协作，领袖力，高");
             stuposiVo7.setAnswer("领袖力强者对自己严格要求、精益求精，面对责任困难勇于担当，面对未知的事物可以保有热情和信念感，洋溢着乐观自信，拥有令人难以忽视的个人魅力，被很多人莫名地崇拜、喜欢、跟随，因为他们拥有一双伯乐一般的慧眼，善于发现个人身上的优势和特点，并将个人优势和团队目标进行有效地结合，让团队成员充分地意识到自己是有价值、有意义、有目标的；他们擅长运用灵活的激励方式调动团队成员的创新力、自信心、进取心，将每个个体的内在潜力发挥到极致。");
@@ -1073,7 +1073,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo7);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("3");
         list.add("15");
         list.add("27");
@@ -1085,9 +1085,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo8.setType((long) i);
+        stuposiVo8.setType( i);
         stuposiVo8.setNum(25L);
-        int i9 = i / 25;
+        Double i9 = i / 25;
         if (i9 >= 0.76){
             stuposiVo8.setName("人际发展，抗逆力，高");
             stuposiVo8.setAnswer("高抗逆力的人战斗力强，有着坚定的意志和源源不断的斗志。面对生活逆境、创伤、悲剧、威胁和其他生活重大压力事件时能够呈现出良好的适应能力。能够将困境所产生的负面影响控制在更小的范围内，并将这种负面影响的程度降至更低，在更短的时间内从困境中恢复。但同时需要小心盲目乐观的陷阱。乐观是建立在客观评价困境、周全考虑问题的基础之上的，为了解决问题，有时可以做最坏的打算、最好的努力。");
@@ -1101,7 +1101,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo8);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("6");
         list.add("18");
         list.add("30");
@@ -1113,9 +1113,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo9.setType((long) i);
+        stuposiVo9.setType( i);
         stuposiVo9.setNum(25L);
-        int i10 = i / 25;
+        Double i10 = i / 25;
         if (i10 >= 0.76){
             stuposiVo9.setName("人际发展，感悟力，高");
             stuposiVo9.setAnswer("高感悟力者具有独特的鉴赏力和审美力，相信美好、见证美好的存在，在平平无奇的自然事物中感知到真、善、美的真谛。无论是对人、事物、景色、影像、音乐还是物品，都具有独到的观察力、理解力和思考力，能够引发情感的升华，思想的启迪，思维认知层面上的飞跃。");
@@ -1129,7 +1129,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo9);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("9");
         list.add("21");
         list.add("33");
@@ -1142,9 +1142,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo10.setType((long) i);
+        stuposiVo10.setType( i);
         stuposiVo10.setNum(30L);
-        int i11 = i / 30;
+        Double i11 = i / 30;
         if (i11 >= 0.76){
             stuposiVo10.setName("人际发展，好奇心，高");
             stuposiVo10.setAnswer("好奇心强的人看什么都新鲜，什么都想知道、都想学。好奇心强者善于观察，能够通过观察周围的事物找到自己的兴趣，然后追踪下去。");
@@ -1158,7 +1158,7 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo10);
         list.clear();
         //stuposiVo = null;
-        i = 0;
+        i = 0.0;
         list.add("12");
         list.add("24");
         list.add("36");
@@ -1171,9 +1171,9 @@ public class QuestionAnswerController extends BaseController
             i += questionAnswerService.selectQuestionAnswer(name, type);
         }
 
-        stuposiVo11.setType((long) i);
+        stuposiVo11.setType( i);
         stuposiVo11.setNum(30L);
-        int i12 = i / 30;
+        Double i12 = i / 30;
         if (i12 >= 0.76){
             stuposiVo11.setName("人际发展，创造力，高");
             stuposiVo11.setAnswer("高创造力的创新者思维随机应变，举一反三，不易受功能固着等心理定势的干扰，因此能产生超常的构想，提出新观念。反应既快又多，能够在较短的时间内表达出较多的观念。对事物具有不同寻常的独特见解，能够利用已有定论的原理、定律、规律、方法，创造性地、更好地解决问题。但是要注意，创造力不是妄想，它建立在知识经验的基础之上。");
@@ -1185,19 +1185,19 @@ public class QuestionAnswerController extends BaseController
             stuposiVo11.setAnswer("高创造力者，思维随机应变，举一反三，不易受功能固着等心理定势的干扰，能够在较短的时间内表达出较多的观念，对事物具有不寻常的独特见解。他们既善于通过独处思考孵化复杂念头，又善于通过社交采集衡量各种信息。他们具有很高的想象力和独创性，同时又有很强的现实感，使想象不会脱离实际。他们兴趣广泛，有很强的玩儿心，喜欢冒险，但同时又自律专注，效率很高。");
         }
         list1.add(stuposiVo11);
-        long l = stuposiVo.getType() + stuposiVo1.getType() + stuposiVo2.getType() + stuposiVo3.getType();
+        Double l = stuposiVo.getType() + stuposiVo1.getType() + stuposiVo2.getType() + stuposiVo3.getType();
         stuposiVo12.setName("自我认知");
         stuposiVo12.setType(l);
         stuposiVo12.setNum(105L);
         stuposiVo12.setAnswer("自我认知");
         list1.add(stuposiVo12);
-        long l1 = stuposiVo4.getType() + stuposiVo5.getType() + stuposiVo6.getType() + stuposiVo7.getType();
+        Double l1 = stuposiVo4.getType() + stuposiVo5.getType() + stuposiVo6.getType() + stuposiVo7.getType();
         stuposiVo13.setName("社会协作");
         stuposiVo13.setType(l1);
         stuposiVo13.setNum(115L);
         stuposiVo13.setAnswer("社会协作");
         list1.add(stuposiVo13);
-        long l2 = stuposiVo8.getType() + stuposiVo9.getType() + stuposiVo10.getType() + stuposiVo11.getType();
+        Double l2 = stuposiVo8.getType() + stuposiVo9.getType() + stuposiVo10.getType() + stuposiVo11.getType();
         stuposiVo14.setName("人际发展");
         stuposiVo14.setType(l2);
         stuposiVo14.setNum(110L);

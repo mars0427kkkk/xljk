@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class stuposiVo {
     private String name;
-    private Long type;
+    private Double type;
     private Long num;
 
     private String answer;
@@ -29,11 +29,11 @@ public class stuposiVo {
         this.name = name;
     }
 
-    public Long getType() {
+    public Double getType() {
         return type;
     }
 
-    public void setType(Long type) {
+    public void setType(Double type) {
         this.type = type;
     }
 
