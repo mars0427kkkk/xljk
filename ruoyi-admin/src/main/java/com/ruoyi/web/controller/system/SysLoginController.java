@@ -11,6 +11,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.common.core.domain.model.WxLoginBody;
 import com.ruoyi.common.core.domain.vo.WxLoginResultVo;
 import com.ruoyi.common.utils.http.HttpUtils;
+import com.ruoyi.system.service.ISysUserService;
 import com.ruoyi.xljk.domain.WxSysUser;
 import com.ruoyi.xljk.service.IWxSysUserService;
 import io.swagger.annotations.ApiOperation;
@@ -54,6 +55,9 @@ public class SysLoginController
 
     @Autowired
     private SysPermissionService permissionService;
+
+    @Autowired
+    private ISysUserService userService;
 
     /**
      * 登录方法
@@ -173,12 +177,14 @@ public class SysLoginController
     public AjaxResult getInfo()
     {
         SysUser user = SecurityUtils.getLoginUser().getUser();
+        Long userId = user.getUserId();
+        SysUser sysUser = userService.selectUserById(userId);
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(user);
         // 权限集合
         Set<String> permissions = permissionService.getMenuPermission(user);
         AjaxResult ajax = AjaxResult.success();
-        ajax.put("user", user);
+        ajax.put("user", sysUser);
         ajax.put("roles", roles);
         ajax.put("permissions", permissions);
         return ajax;
