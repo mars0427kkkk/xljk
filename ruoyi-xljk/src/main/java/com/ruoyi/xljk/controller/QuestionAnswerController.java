@@ -668,6 +668,7 @@ public class QuestionAnswerController extends BaseController
         if (allValuesEqual) {
             return success("不行");
         }
+
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
         for (homeVo vo : stuposi) {
@@ -754,6 +755,14 @@ public class QuestionAnswerController extends BaseController
         list1.add(stuposiVo15);
         return success(list1);
     }
+    private static boolean isInvalidCombination(String combination, String[] invalidCombinations) {
+        for (String invalid : invalidCombinations) {
+            if (combination.equals(invalid)) {
+                return true;
+            }
+        }
+        return false;
+    }
     @ApiOperation("积极心理")
     @PostMapping ("/stuposi")
     public AjaxResult stuposilist(@RequestBody List<homeVo> stuposi){
@@ -761,6 +770,13 @@ public class QuestionAnswerController extends BaseController
         boolean allValuesEqual = areAllValuesEqual(resultMap);
 
         if (allValuesEqual) {
+            return success("不行");
+        }
+        String s2 = resultMap.get("4");
+        String s3 = resultMap.get("61");
+        String[] invalidCombinations = {"AD", "DA", "AE", "EA", "BE", "EB"};
+        String answerCombination = s2 + s3;
+        if (isInvalidCombination(answerCombination, invalidCombinations)) {
             return success("不行");
         }
         Map<String, Integer> occurrencesMap = new HashMap<>();
