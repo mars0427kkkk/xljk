@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xljk.mapper.JjxlMapper">
+    
+    <resultMap type="Jjxl" id="JjxlResult">
+        <result property="id"    column="id"    />
+        <result property="type"    column="type"    />
+        <result property="name"    column="name"    />
+        <result property="text"    column="text"    />
+        <result property="level"    column="level"    />
+    </resultMap>
+
+    <sql id="selectJjxlVo">
+        select id, type, name, text, level from jjxl
+    </sql>
+
+    <select id="selectJjxlList" parameterType="Jjxl" resultMap="JjxlResult">
+        <include refid="selectJjxlVo"/>
+        <where>  
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="text != null  and text != ''"> and text = #{text}</if>
+            <if test="level != null  and level != ''"> and level = #{level}</if>
+        </where>
+    </select>
+    
+    <select id="selectJjxlById" parameterType="Long" resultMap="JjxlResult">
+        <include refid="selectJjxlVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectJjxl" resultType="java.lang.String">
+        select  text from jjxl where `type` = "自我认知" and name = #{name} and level = #{level}
+    </select>
+    <select id="selectJjxl1" resultType="java.lang.String">
+        select  text from jjxl where `type` = "社会协作" and name = #{name} and level = #{level}
+    </select>
+    <select id="selectJjxl2" resultType="java.lang.String">
+        select  text from jjxl where `type` = "人际发展" and name = #{name} and level = #{level}
+    </select>
+    <insert id="insertJjxl" parameterType="Jjxl" useGeneratedKeys="true" keyProperty="id">
+        insert into jjxl
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null">type,</if>
+            <if test="name != null">name,</if>
+            <if test="text != null">text,</if>
+            <if test="level != null">level,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null">#{type},</if>
+            <if test="name != null">#{name},</if>
+            <if test="text != null">#{text},</if>
+            <if test="level != null">#{level},</if>
+         </trim>
+    </insert>
+
+    <update id="updateJjxl" parameterType="Jjxl">
+        update jjxl
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="type != null">type = #{type},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="text != null">text = #{text},</if>
+            <if test="level != null">level = #{level},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteJjxlById" parameterType="Long">
+        delete from jjxl where id = #{id}
+    </delete>
+
+    <delete id="deleteJjxlByIds" parameterType="String">
+        delete from jjxl where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
