@@ -1069,16 +1069,16 @@ public class QuestionAnswerController extends BaseController
         if (i7 >= 0.76){
             sr7.append("能很好的感恩利他");
             stuposiVo6.setName("你的感恩利他得分为" + i + "，" + sr7);
-            String s = jjxlService.selectJjxl1("同理心", "1");
+            String s = jjxlService.selectJjxl1("感恩利他", "1");
             stuposiVo6.setAnswer(s);
         }else if (i7> 0.44 && i7 < 0.76){
             sr7.append("能较好的感恩利他");
             stuposiVo6.setName("你的感恩利他得分为" + i + "，" + sr7);
-            String s = jjxlService.selectJjxl1("同理心", "2");
+            String s = jjxlService.selectJjxl1("感恩利他", "2");
             stuposiVo6.setAnswer(s);
         }else {
             stuposiVo6.setName("你的感恩利他得分为" + i );
-            String s = jjxlService.selectJjxl1("同理心", "3");
+            String s = jjxlService.selectJjxl1("感恩利他", "3");
             stuposiVo6.setAnswer(s);
         }
         list1.add(stuposiVo6);
@@ -1104,17 +1104,17 @@ public class QuestionAnswerController extends BaseController
         if (i8 >= 0.76){
             sr8.append("具备很强的领袖力。");
             stuposiVo7.setName("你的领袖力得分为" + i + "，" + sr8);
-            String s = jjxlService.selectJjxl1("同理心", "1");
+            String s = jjxlService.selectJjxl1("领袖力", "1");
             stuposiVo7.setAnswer(s);
         }else if (i8> 0.44 && i8 < 0.76){
             sr8.append("具备较强的领袖力。");
             stuposiVo7.setName("你的领袖力得分为" + i + "，" + sr8);
-            String s = jjxlService.selectJjxl1("同理心", "2");
+            String s = jjxlService.selectJjxl1("领袖力", "2");
             stuposiVo7.setAnswer(s);
         }else {
             sr8.append("具备一定的领袖力。");
             stuposiVo7.setName("你的领袖力得分为" + i + "，" + sr8);
-            String s = jjxlService.selectJjxl1("同理心", "3");
+            String s = jjxlService.selectJjxl1("领袖力", "3");
             stuposiVo7.setAnswer(s);
         }
         list1.add(stuposiVo7);
@@ -1139,17 +1139,17 @@ public class QuestionAnswerController extends BaseController
         if (i9 >= 0.76){
             sr9.append("抗逆力强");
             stuposiVo8.setName("你的抗逆力得分为" + i + "，" + sr9);
-            String s = jjxlService.selectJjxl2("同理心", "1");
+            String s = jjxlService.selectJjxl2("抗逆力", "1");
             stuposiVo8.setAnswer(s);
         }else if (i9> 0.44 && i9 < 0.76){
             sr9.append("抗逆力较强");
             stuposiVo8.setName("你的抗逆力得分为" + i + "，" + sr9);
-            String s = jjxlService.selectJjxl2("同理心", "2");
+            String s = jjxlService.selectJjxl2("抗逆力", "2");
             stuposiVo8.setAnswer(s);
         }else {
             sr9.append("抗逆力一般");
             stuposiVo8.setName("你的抗逆力得分为" + i + "，" + sr9);
-            String s = jjxlService.selectJjxl2("同理心", "3");
+            String s = jjxlService.selectJjxl2("抗逆力", "3");
             stuposiVo8.setAnswer(s);
         }
         list1.add(stuposiVo8);
