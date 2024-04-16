@@ -51,7 +51,7 @@ public class AnswerLocalhostController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(AnswerLocalhost answerLocalhost)
     {
-        startPage();
+//        startPage();
         List<AnswerLocalhost> list = answerLocalhostService.selectAnswerLocalhostList(answerLocalhost);
         return getDataTable(list);
     }
