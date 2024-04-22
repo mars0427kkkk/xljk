@@ -119,15 +119,15 @@ public class QuestionAnswerController extends BaseController
         }
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
-        for (homeVo vo : stuposi) {
-            String name = vo.getType();
+        for (String vo : resultMap.values()) {
+
             // 检查映射中是否已经存在该字符串
-            if (occurrencesMap.containsKey(name)) {
+            if (occurrencesMap.containsKey(vo)) {
                 // 如果存在，则将其出现次数加1
-                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
             } else {
                 // 如果不存在，则将其初始出现次数设为1
-                occurrencesMap.put(name, 1);
+                occurrencesMap.put(vo, 1);
             }
 
         }
@@ -292,15 +292,15 @@ public class QuestionAnswerController extends BaseController
         Map<String, String> resultMap = convertListToMap(stuposi);
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
-        for (homeVo vo : stuposi) {
-            String name = vo.getType();
+        for (String vo : resultMap.values()) {
+
             // 检查映射中是否已经存在该字符串
-            if (occurrencesMap.containsKey(name)) {
+            if (occurrencesMap.containsKey(vo)) {
                 // 如果存在，则将其出现次数加1
-                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
             } else {
                 // 如果不存在，则将其初始出现次数设为1
-                occurrencesMap.put(name, 1);
+                occurrencesMap.put(vo, 1);
             }
 
         }
@@ -672,15 +672,15 @@ public class QuestionAnswerController extends BaseController
 
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
-        for (homeVo vo : stuposi) {
-            String name = vo.getType();
+        for (String vo : resultMap.values()) {
+
             // 检查映射中是否已经存在该字符串
-            if (occurrencesMap.containsKey(name)) {
+            if (occurrencesMap.containsKey(vo)) {
                 // 如果存在，则将其出现次数加1
-                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
             } else {
                 // 如果不存在，则将其初始出现次数设为1
-                occurrencesMap.put(name, 1);
+                occurrencesMap.put(vo, 1);
             }
 
         }
@@ -784,15 +784,15 @@ public class QuestionAnswerController extends BaseController
         }
         Map<String, Integer> occurrencesMap = new HashMap<>();
 
-        for (homeVo vo : stuposi) {
-            String name = vo.getType();
+        for (String vo : resultMap.values()) {
+
             // 检查映射中是否已经存在该字符串
-            if (occurrencesMap.containsKey(name)) {
+            if (occurrencesMap.containsKey(vo)) {
                 // 如果存在，则将其出现次数加1
-                occurrencesMap.put(name, occurrencesMap.get(name) + 1);
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
             } else {
                 // 如果不存在，则将其初始出现次数设为1
-                occurrencesMap.put(name, 1);
+                occurrencesMap.put(vo, 1);
             }
 
         }
@@ -888,7 +888,7 @@ public class QuestionAnswerController extends BaseController
         }
         StringBuilder sr2 = new StringBuilder();
 
-        stuposiVo1.setType( i);
+        stuposiVo1.setType(i);
         stuposiVo1.setNum(25L);
        Double i2 =  (i / 25.0);
         if (i2 >= 0.76){
