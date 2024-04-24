@@ -1276,13 +1276,26 @@ public class QuestionAnswerController extends BaseController
         }else {
             stringBuilder1.append("一般，");
         }
-        stringBuilder1.append(sr1);
-        stringBuilder1.append(",");
-        stringBuilder1.append(sr2);
-        stringBuilder1.append(",");
-        stringBuilder1.append(sr3);
-        stringBuilder1.append(",");
-        stringBuilder1.append(sr4);
+
+        if (sr1 != null && sr1.length() > 0) {
+
+            stringBuilder1.append(sr1);
+        }
+        if (sr2 != null && sr2.length() > 0) {
+            // 将逗号和 sr2 的内容追加到 stringBuilder1 中
+            stringBuilder1.append(",");
+            stringBuilder1.append(sr2);
+        }
+
+        if (sr3 != null && sr3.length() > 0) {
+            stringBuilder1.append(",");
+            stringBuilder1.append(sr3);
+        }
+
+        if (sr4 != null && sr4.length() > 0) {
+            stringBuilder1.append(",");
+            stringBuilder1.append(sr4);
+        }
         stuposiVo12.setAnswer(stringBuilder1.toString());
         list1.add(stuposiVo12);
         Double l1 = stuposiVo4.getType() + stuposiVo5.getType() + stuposiVo6.getType() + stuposiVo7.getType();
@@ -1298,13 +1311,25 @@ public class QuestionAnswerController extends BaseController
         }else {
             stringBuilder2.append("一般，");
         }
-        stringBuilder2.append(sr5);
-        stringBuilder2.append(",");
-        stringBuilder2.append(sr6);
-        stringBuilder2.append(",");
-        stringBuilder2.append(sr7);
-        stringBuilder2.append(",");
-        stringBuilder2.append(sr8);
+        if (sr5 != null && sr5.length() > 0) {
+
+            stringBuilder2.append(sr5);
+        }
+        if (sr6 != null && sr6.length() > 0) {
+            // 将逗号和 sr2 的内容追加到 stringBuilder1 中
+            stringBuilder2.append(",");
+            stringBuilder2.append(sr6);
+        }
+
+        if (sr7 != null && sr7.length() > 0) {
+            stringBuilder2.append(",");
+            stringBuilder2.append(sr7);
+        }
+
+        if (sr8 != null && sr8.length() > 0) {
+            stringBuilder2.append(",");
+            stringBuilder2.append(sr8);
+        }
         stuposiVo13.setAnswer(stringBuilder2.toString());
         list1.add(stuposiVo13);
         Double l2 = stuposiVo8.getType() + stuposiVo9.getType() + stuposiVo10.getType() + stuposiVo11.getType();
@@ -1320,13 +1345,25 @@ public class QuestionAnswerController extends BaseController
         }else {
             stringBuilder3.append("一般，");
         }
-        stringBuilder3.append(sr9);
-        stringBuilder3.append(",");
-        stringBuilder3.append(sr10);
-        stringBuilder3.append(",");
-        stringBuilder3.append(sr11);
-        stringBuilder3.append(",");
-        stringBuilder3.append(sr12);
+        if (sr9 != null && sr9.length() > 0) {
+
+            stringBuilder3.append(sr9);
+        }
+        if (sr10 != null && sr10.length() > 0) {
+            // 将逗号和 sr2 的内容追加到 stringBuilder1 中
+            stringBuilder3.append(",");
+            stringBuilder3.append(sr10);
+        }
+
+        if (sr11 != null && sr11.length() > 0) {
+            stringBuilder3.append(",");
+            stringBuilder3.append(sr11);
+        }
+
+        if (sr12 != null && sr12.length() > 0) {
+            stringBuilder3.append(",");
+            stringBuilder3.append(sr12);
+        }
         stuposiVo14.setAnswer(stringBuilder3.toString());
         list1.add(stuposiVo14);
         String string = list1.toString();
