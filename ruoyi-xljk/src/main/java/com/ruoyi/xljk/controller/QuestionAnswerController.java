@@ -1531,4 +1531,1665 @@ public class QuestionAnswerController extends BaseController
     {
         return toAjax(questionAnswerService.deleteQuestionAnswerByIds(ids));
     }
+
+    @ApiOperation("目标取向测验")
+    @PostMapping ("/stuposiss")
+    public AjaxResult stuposisslist(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("11");
+        list.add("21");
+        list.add("29");
+        list.add("33");
+        list.add("3");
+        list.add("13");
+        list.add("23");
+        list.add("5");
+        list.add("15");
+        list.add("25");
+        list.add("7");
+        list.add("17");
+        list.add("26");
+        list.add("31");
+        list.add("9");
+        list.add("19");
+        list.add("28");
+        list.add("32");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("自我取向评分");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("12");
+        list.add("22");
+        list.add("30");
+        list.add("34");
+        list.add("4");
+        list.add("14");
+        list.add("24");
+        list.add("6");
+        list.add("16");
+        list.add("8");
+        list.add("18");
+        list.add("27");
+        list.add("10");
+        list.add("20");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("任务取向评分");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+//
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("目标取向测验");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+    @ApiOperation("特质焦虑量表")
+    @PostMapping ("/stuposiss1")
+    public AjaxResult stuposiss1list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("27");
+        list.add("17");
+        list.add("21");
+        list.add("22");
+        list.add("16");
+        list.add("28");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("社会评价焦虑");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("26");
+        list.add("32");
+        list.add("25");
+        list.add("23");
+        list.add("24");
+        list.add("29");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("比赛准备焦虑");
+        stuposiVo3.setType( i);
+         list1.add(stuposiVo3);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("5");
+        list.add("4");
+        list.add("11");
+        list.add("9");
+        list.add("14");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo2.setName("竞技水平发挥焦虑");
+        stuposiVo2.setType( i);
+        list1.add(stuposiVo2);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("8");
+        list.add("19");
+        list.add("12");
+        list.add("33");
+        list.add("18");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo1.setName("失败焦虑");
+        stuposiVo1.setType( i);
+        list1.add(stuposiVo1);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("31");
+        list.add("6");
+        list.add("1");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("对方实力焦虑");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("7");
+        list.add("13");
+        list.add("15");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("受伤焦虑");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("10");
+        list.add("20");
+        list.add("30");
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo6.setName("测谎分数");
+        stuposiVo6.setType(i);
+        list1.add(stuposiVo6);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("运动认知特质焦虑量表");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+
+    @ApiOperation("特质自信量表")
+    @PostMapping ("/stuposiss2")
+    public AjaxResult stuposiss2list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("3");
+        list.add("5");
+        list.add("7");
+        list.add("9");
+        list.add("11");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("特质运动任务自信心");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("4");
+        list.add("6");
+        list.add("8");
+        list.add("10");
+        list.add("12");
+        list.add("13");
+        list.add("14");
+        list.add("15");
+        list.add("16");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("特质运动应对自信心");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("运动特质自信量表");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+    @ApiOperation("运动员应对策略量表")
+    @PostMapping ("/stuposiss3")
+    public AjaxResult stuposiss3list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("2");
+        list.add("4");
+        list.add("5");
+        list.add("7");
+        list.add("8");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("集中解决问题的应对");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("9");
+        list.add("14");
+        list.add("15");
+        list.add("16");
+        list.add("18");
+        list.add("23");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("集中处理情绪的应对");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("10");
+        list.add("11");
+        list.add("12");
+        list.add("19");
+        list.add("21");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("回避应对");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("6");
+        list.add("13");
+        list.add("17");
+        list.add("20");
+        list.add("22");
+        list.add("24");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("超越应对");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("运动员应对策略量表");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+    @ApiOperation("青少年心理韧性")
+    @PostMapping ("/stuposiss4")
+    public AjaxResult stuposiss4list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("3");
+        list.add("4");
+        list.add("11");
+        list.add("20");
+        list.add("24");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("目标专注");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("1");
+        list.add("2");
+        list.add("5");
+        list.add("21");
+        list.add("23");
+        list.add("27");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("情绪控制");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("10");
+        list.add("13");
+        list.add("14");
+        list.add("25");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("积极认知");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("8");
+        list.add("15");
+        list.add("16");
+        list.add("17");
+        list.add("22");
+        list.add("19");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("家庭支持");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("6");
+        list.add("7");
+        list.add("9");
+        list.add("12");
+        list.add("18");
+        list.add("26");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("人际协助");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("青少年心理韧性");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+
+    @ApiOperation("运动员意志品质量表")
+    @PostMapping ("/stuposiss5")
+    public AjaxResult stuposiss5list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("10");
+        list.add("19");
+        list.add("28");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("自我实现欲");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("12");
+        list.add("21");
+        list.add("30");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("自制力");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("4");
+        list.add("13");
+        list.add("22");
+        list.add("31");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("信念确认度");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("5");
+        list.add("14");
+        list.add("23");
+        list.add("32");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("顽强性");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("6");
+        list.add("15");
+        list.add("24");
+        list.add("33");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("智源集中度");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("7");
+        list.add("16");
+        list.add("25");
+        list.add("34");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo6.setName("决策及时性");
+        stuposiVo6.setType( i);
+        list1.add(stuposiVo6);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("8");
+        list.add("17");
+        list.add("26");
+        list.add("35");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo7.setName("倦怠耐久度");
+        stuposiVo7.setType( i);
+        list1.add(stuposiVo7);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("9");
+        list.add("18");
+        list.add("27");
+        list.add("36");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo6.setName("困难承受度");
+        stuposiVo6.setType( i);
+        list1.add(stuposiVo6);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("运动员意志品质量表");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+    @ApiOperation("运动表象问卷")
+    @PostMapping ("/stuposiss6")
+    public AjaxResult stuposiss6list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("6");
+        list.add("11");
+        list.add("16");
+        list.add("21");
+        list.add("26");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("激发特殊动机的表象");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("7");
+        list.add("12");
+        list.add("17");
+        list.add("22");
+        list.add("27");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("激发唤醒动机的表象");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("5");
+        list.add("10");
+        list.add("15");
+        list.add("20");
+        list.add("25");
+        list.add("30");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("激发控制动机的表象");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("8");
+        list.add("13");
+        list.add("18");
+        list.add("23");
+        list.add("28");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("特殊认知的表象");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("4");
+        list.add("9");
+        list.add("14");
+        list.add("19");
+        list.add("24");
+        list.add("29");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("一般认知的表象");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("运动表象问卷");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+
+    @ApiOperation("运动心理技能量表")
+    @PostMapping ("/stuposiss7")
+    public AjaxResult stuposiss7list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("3");
+        list.add("11");
+        list.add("15");
+        list.add("25");
+        list.add("29");
+        list.add("38");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("焦虑控制");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("8");
+        list.add("16");
+        list.add("17");
+        list.add("21");
+        list.add("26");
+        list.add("33");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("集中注意");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("4");
+        list.add("14");
+        list.add("18");
+        list.add("23");
+        list.add("28");
+        list.add("30");
+        list.add("34");
+        list.add("36");
+        list.add("44");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("自信心");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("6");
+        list.add("7");
+        list.add("13");
+        list.add("20");
+        list.add("32");
+        list.add("35");
+        list.add("45");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("心理准备");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("1");
+        list.add("9");
+        list.add("12");
+        list.add("22");
+        list.add("24");
+        list.add("39");
+        list.add("42");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("动机");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("5");
+        list.add("9");
+        list.add("27");
+        list.add("31");
+        list.add("37");
+        list.add("43");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("团队重要性");
+        stuposiVo5.setType(i);
+        list1.add(stuposiVo5);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("运动心理技能量表");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+
+    @ApiOperation("POMS心境状态问卷")
+    @PostMapping ("/stuposiss8")
+    public AjaxResult stuposiss8list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("8");
+        list.add("15");
+        list.add("21");
+        list.add("28");
+        list.add("35");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("紧张");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("9");
+        list.add("16");
+        list.add("22");
+        list.add("29");
+        list.add("36");
+        list.add("37");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("愤怒");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("10");
+        list.add("17");
+        list.add("23");
+        list.add("30");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("疲劳");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("11");
+        list.add("18");
+        list.add("24");
+        list.add("31");
+        list.add("38");
+
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("抑郁");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("5");
+        list.add("12");
+        list.add("19");
+        list.add("25");
+        list.add("32");
+        list.add("39");
+
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("精力");
+        stuposiVo5.setType( i);
+        list1.add(stuposiVo5);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("6");
+        list.add("13");
+        list.add("20");
+        list.add("26");
+        list.add("33");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo5.setName("慌乱");
+        stuposiVo5.setType(i);
+        list1.add(stuposiVo5);
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("POMS心境状态问卷");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
+    @ApiOperation("状态焦虑")
+    @PostMapping ("/stuposiss9")
+    public AjaxResult stuposiss9list(@RequestBody List<homeVo> stuposi){
+        //映射map
+        Map<String, String> resultMap = convertListToMap(stuposi);
+        Map<String, Integer> occurrencesMap = new HashMap<>();
+
+        for (String vo : resultMap.values()) {
+
+            // 检查映射中是否已经存在该字符串
+            if (occurrencesMap.containsKey(vo)) {
+                // 如果存在，则将其出现次数加1
+                occurrencesMap.put(vo, occurrencesMap.get(vo) + 1);
+            } else {
+                // 如果不存在，则将其初始出现次数设为1
+                occurrencesMap.put(vo, 1);
+            }
+
+        }
+        String keyToRemove = "openid";
+        String s1 = resultMap.get(keyToRemove);
+        occurrencesMap.remove(s1);
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        // 遍历occurrencesMap，并构建字符串
+        for (Map.Entry<String, Integer> entry : occurrencesMap.entrySet()) {
+            stringBuilder.append(entry.getKey())
+                    .append(":")
+                    .append(entry.getValue())
+                    .append(",");
+        }
+
+        // 删除最后一个逗号和空格
+        if (stringBuilder.length() > 0) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+
+
+        // 打印结果
+        String occurrencesString = stringBuilder.toString();
+
+        AnswerLocalhost answerLocalhost = new AnswerLocalhost();
+        List<String> list = new ArrayList<>();
+        List<stuposiVo> list1 = new ArrayList<>();
+        stuposiVo stuposiVo = new stuposiVo();
+        stuposiVo stuposiVo1 = new stuposiVo();
+        stuposiVo stuposiVo2 = new stuposiVo();
+        stuposiVo stuposiVo3 = new stuposiVo();
+        stuposiVo stuposiVo4 = new stuposiVo();
+        stuposiVo stuposiVo5 = new stuposiVo();
+        stuposiVo stuposiVo6 = new stuposiVo();
+        stuposiVo stuposiVo7 = new stuposiVo();
+        stuposiVo stuposiVo8 = new stuposiVo();
+        stuposiVo stuposiVo9 = new stuposiVo();
+
+
+        list.add("1");
+        list.add("4");
+        list.add("7");
+        list.add("10");
+        list.add("13");
+        list.add("16");
+        list.add("19");
+        list.add("22");
+        list.add("25");
+        Double i =0.0;
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo.setName("认知状态焦虑");
+        stuposiVo.setType(i);
+
+        list1.add(stuposiVo);
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("2");
+        list.add("5");
+        list.add("8");
+        list.add("11");
+        list.add("14");
+        list.add("17");
+        list.add("20");
+        list.add("23");
+        list.add("26");
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo3.setName("躯体状态焦虑");
+        stuposiVo3.setType( i);
+        list1.add(stuposiVo3);
+
+        list.clear();
+        //stuposiVo = null;
+        i =0.0;
+        list.add("3");
+        list.add("6");
+        list.add("9");
+        list.add("12");
+        list.add("15");
+        list.add("18");
+        list.add("21");
+        list.add("24");
+        list.add("27");
+
+
+
+        for (String s: list) {
+            String name = s;
+            String type = resultMap.get(name);
+            i += questionAnswerService.selectQuestionAnswers(name, type);
+        }
+        stuposiVo4.setName("状态自信心");
+        stuposiVo4.setType( i);
+        list1.add(stuposiVo4);
+
+
+        String string = list1.toString();
+        String s = resultMap.get("openid");
+        answerLocalhost.setOpenid(s);
+        answerLocalhost.setTestName("状态焦虑");
+        answerLocalhost.setAnswer(string);
+        answerLocalhost.setAnswerNum(occurrencesString);
+
+        answerLocalhostService.insertAnswerLocalhost(answerLocalhost);
+        AnswerLocalhost answerLocalhost1 = answerLocalhostService.selectAnswerLocalhostById(answerLocalhost.getId());
+        stuposiVo9.setTestTime(answerLocalhost1.getTestTime());
+        stuposiVo9.setName(answerLocalhost1.getTestName());
+        list1.add(stuposiVo9);
+        return success(list1);
+    }
 }
