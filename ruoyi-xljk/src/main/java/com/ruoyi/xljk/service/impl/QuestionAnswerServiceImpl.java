@@ -55,6 +55,12 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService
         return questionAnswerMapper.selectQuestionAnswers(name,type);
     }
 
+    @Override
+    public int selectAnswers(String names, String type, Integer integer) {
+        Long name = Long.parseLong(names);
+        return questionAnswerMapper.selectQuestionAnswers1(name,type,integer);
+    }
+
     /**
      * 查询【请填写功能名称】列表
      * 

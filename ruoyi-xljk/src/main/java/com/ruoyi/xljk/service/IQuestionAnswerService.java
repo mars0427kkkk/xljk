@@ -23,6 +23,7 @@ public interface IQuestionAnswerService
     public int selectQuestionSAnswer(String name,String type);
     public int selectQuestionhappySAnswer(String name,String type);
     public int selectQuestionAnswers(String name,String type);
+    public int selectAnswers(String name,String type,Integer integer);
 
     /**
      * 查询【请填写功能名称】列表

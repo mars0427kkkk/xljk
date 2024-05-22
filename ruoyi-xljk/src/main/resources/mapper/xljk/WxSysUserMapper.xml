@@ -39,10 +39,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="workAddress"    column="workAddress"    />
         <result property="officalIsMarry"    column="officalIsMarry"    />
         <result property="officalEduBack"    column="officalEduBack"    />
+        <result property="sportAge"    column="sportAge"    />
+        <result property="special"    column="special"    />
+        <result property="cityTeam"    column="cityTeam"    />
     </resultMap>
 
     <sql id="selectSysUserVo">
-        select user_id, dept_id, user_name, nick_name, user_type, email, phonenumber, sex, avatar, password, status, del_flag, login_ip, login_date, create_by, create_time, update_by, update_time, remark, open_id, name, age, gender, identity, schoolName, grade, classes, idCardNumber, parentEduBack, teacherIsMarry, teacherEduBack, workAddress, officalIsMarry, officalEduBack from sys_user
+        select user_id, dept_id, user_name, nick_name, user_type, email, phonenumber, sex, avatar, password, status, del_flag, login_ip, login_date, create_by, create_time, update_by, update_time, remark, open_id, name, age, gender, identity, schoolName, grade, classes, idCardNumber, parentEduBack, teacherIsMarry, teacherEduBack, workAddress, officalIsMarry, officalEduBack ,sportAge,special, cityTeam from sys_user
     </sql>
 
     <select id="selectSysUserList" parameterType="WxSysUser" resultMap="SysUserResult">
@@ -75,6 +78,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="workAddress != null  and workAddress != ''"> and workAddress = #{workAddress}</if>
             <if test="officalIsMarry != null  and officalIsMarry != ''"> and officalIsMarry = #{officalIsMarry}</if>
             <if test="officalEduBack != null  and officalEduBack != ''"> and officalEduBack = #{officalEduBack}</if>
+            <if test="sportAge != null  and sportAge != ''"> and sportAge = #{sportAge}</if>
+            <if test="special != null  and special != ''"> and special = #{special}</if>
+            <if test="cityTeam != null  and cityTeam != ''"> and cityTeam = #{cityTeam}</if>
         </where>
     </select>
     
@@ -123,6 +129,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="workAddress != null">workAddress,</if>
             <if test="officalIsMarry != null">officalIsMarry,</if>
             <if test="officalEduBack != null">officalEduBack,</if>
+            <if test="sportAge != null">sportAge,</if>
+            <if test="special != null">special,</if>
+            <if test="cityTeam != null">cityTeam,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="deptId != null">#{deptId},</if>
@@ -158,6 +167,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="workAddress != null">#{workAddress},</if>
             <if test="officalIsMarry != null">#{officalIsMarry},</if>
             <if test="officalEduBack != null">#{officalEduBack},</if>
+            <if test="sportAge != null">#{sportAge},</if>
+            <if test="special != null">#{special},</if>
+            <if test="cityTeam != null">#{cityTeam},</if>
          </trim>
     </insert>
 
@@ -197,6 +209,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="workAddress != null">workAddress = #{workAddress},</if>
             <if test="officalIsMarry != null">officalIsMarry = #{officalIsMarry},</if>
             <if test="officalEduBack != null">officalEduBack = #{officalEduBack},</if>
+            <if test="sportAge != null">sportAge = #{sportAge},</if>
+            <if test="special != null">special = #{special},</if>
+            <if test="cityTeam != null">cityTeam = #{cityTeam},</if>
         </trim>
         where open_id = #{openId}
     </update>
