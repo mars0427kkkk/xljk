@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT answer_score FROM question_answer WHERE question_type_id = 6 AND question_id = #{name} AND answer_id = #{type};
     </select>
     <select id="selectQuestionAnswers1" resultType="java.lang.Integer">
-        SELECT answer_score FROM question_answer WHERE question_id = #{name} AND answer_id = #{type} AND question_type_id = #{questionTypeId};
+        SELECT answer_score FROM question_answer WHERE question_id = #{name} AND answer_id = #{type} AND question_type_id = #{integer};
     </select>
 
 
