@@ -83,10 +83,13 @@ public class WxSysUser extends BaseEntity
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private Long age;
+    private Long sportAge;
 
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private String gender;
+    private String special;
+    private String cityTeame;
 
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
@@ -132,7 +135,31 @@ public class WxSysUser extends BaseEntity
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private String officalEduBack;
 
-    public void setUserId(Long userId) 
+    public Long getSportAge() {
+        return sportAge;
+    }
+
+    public void setSportAge(Long sportAge) {
+        this.sportAge = sportAge;
+    }
+
+    public String getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(String special) {
+        this.special = special;
+    }
+
+    public String getcityTeame() {
+        return cityTeame;
+    }
+
+    public void setcityTeame(String cityTeame) {
+        this.cityTeame = cityTeame;
+    }
+
+    public void setUserId(Long userId)
     {
         this.userId = userId;
     }
@@ -431,6 +458,9 @@ public class WxSysUser extends BaseEntity
             .append("workAddress", getWorkAddress())
             .append("officalIsMarry", getOfficalIsMarry())
             .append("officalEduBack", getOfficalEduBack())
+            .append("sportAge", getSportAge())
+            .append("special", getSpecial())
+            .append("cityTeam", getcityTeame())
             .toString();
     }
 }
