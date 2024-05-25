@@ -83,7 +83,7 @@ public class WxSysUser extends BaseEntity
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private Long age;
-    private Long sportAge;
+    private String sportAge;
 
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
@@ -135,11 +135,12 @@ public class WxSysUser extends BaseEntity
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private String officalEduBack;
 
-    public Long getSportAge() {
+
+    public String getSportAge() {
         return sportAge;
     }
 
-    public void setSportAge(Long sportAge) {
+    public void setSportAge(String sportAge) {
         this.sportAge = sportAge;
     }
 
