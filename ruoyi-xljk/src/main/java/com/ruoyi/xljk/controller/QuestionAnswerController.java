@@ -3026,9 +3026,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("精力");
-        stuposiVo5.setType( i);
-        list1.add(stuposiVo5);
+        stuposiVo6.setName("精力");
+        stuposiVo6.setType( i);
+        list1.add(stuposiVo6);
 
         list.clear();
         //stuposiVo = null;
@@ -3045,9 +3045,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("慌乱");
-        stuposiVo5.setType(i);
-        list1.add(stuposiVo5);
+        stuposiVo7.setName("慌乱");
+        stuposiVo7.setType(i);
+        list1.add(stuposiVo7);
 
         String string = list1.toString();
         String s = resultMap.get("openid");
