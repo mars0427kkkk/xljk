@@ -2265,9 +2265,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("人际协助");
-        stuposiVo5.setType( i);
-        list1.add(stuposiVo5);
+        stuposiVo6.setName("人际协助");
+        stuposiVo6.setType( i);
+        list1.add(stuposiVo6);
 
         String string = list1.toString();
         String s = resultMap.get("openid");
@@ -2427,9 +2427,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("智源集中度");
-        stuposiVo5.setType( i);
-        list1.add(stuposiVo5);
+        stuposiVo6.setName("智源集中度");
+        stuposiVo6.setType( i);
+        list1.add(stuposiVo6);
 
         list.clear();
         //stuposiVo = null;
@@ -2446,9 +2446,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo6.setName("决策及时性");
-        stuposiVo6.setType( i);
-        list1.add(stuposiVo6);
+        stuposiVo7.setName("决策及时性");
+        stuposiVo7.setType( i);
+        list1.add(stuposiVo7);
         list.clear();
         //stuposiVo = null;
         i =0.0;
@@ -2464,9 +2464,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo7.setName("倦怠耐久度");
-        stuposiVo7.setType( i);
-        list1.add(stuposiVo7);
+        stuposiVo8.setName("倦怠耐久度");
+        stuposiVo8.setType( i);
+        list1.add(stuposiVo8);
         list.clear();
         //stuposiVo = null;
         i =0.0;
@@ -2482,9 +2482,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo6.setName("困难承受度");
-        stuposiVo6.setType( i);
-        list1.add(stuposiVo6);
+        stuposiVo1.setName("困难承受度");
+        stuposiVo1.setType( i);
+        list1.add(stuposiVo1);
 
         String string = list1.toString();
         String s = resultMap.get("openid");
@@ -2653,9 +2653,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("一般认知的表象");
-        stuposiVo5.setType( i);
-        list1.add(stuposiVo5);
+        stuposiVo6.setName("一般认知的表象");
+        stuposiVo6.setType(i);
+        list1.add(stuposiVo6);
 
 
         String string = list1.toString();
@@ -2832,9 +2832,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("动机");
-        stuposiVo5.setType( i);
-        list1.add(stuposiVo5);
+        stuposiVo6.setName("动机");
+        stuposiVo6.setType( i);
+        list1.add(stuposiVo6);
 
         list.clear();
         //stuposiVo = null;
@@ -2852,9 +2852,9 @@ public class QuestionAnswerController extends BaseController
             String type = resultMap.get(name);
             i += questionAnswerService.selectAnswers(name, type,integer);
         }
-        stuposiVo5.setName("团队重要性");
-        stuposiVo5.setType(i);
-        list1.add(stuposiVo5);
+        stuposiVo7.setName("团队重要性");
+        stuposiVo7.setType(i);
+        list1.add(stuposiVo7);
 
         String string = list1.toString();
         String s = resultMap.get("openid");
