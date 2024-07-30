@@ -2,6 +2,7 @@ package com.ruoyi.xljk.service;
 
 import java.util.List;
 import com.ruoyi.xljk.domain.AnswerLocalhost;
+import com.ruoyi.xljk.domain.PersonTest;
 import com.ruoyi.xljk.domain.QuestionAnswer;
 
 /**
@@ -63,4 +64,6 @@ public interface IAnswerLocalhostService
     public int deleteAnswerLocalhostById(Long id);
 
     List<QuestionAnswer> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
+
+    List<PersonTest> selectAnswerPersonTest(String name);
 }

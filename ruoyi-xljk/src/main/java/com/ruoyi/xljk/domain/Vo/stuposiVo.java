@@ -1,9 +1,10 @@
 package com.ruoyi.xljk.domain.Vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.util.Date;
-
+@Data
 public class stuposiVo {
     private String name;
     private Double type;

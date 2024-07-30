@@ -2,6 +2,7 @@ package com.ruoyi.xljk.mapper;
 
 import java.util.List;
 import com.ruoyi.xljk.domain.AnswerLocalhost;
+import com.ruoyi.xljk.domain.PersonTest;
 
 /**
  * 【请填写功能名称】Mapper接口
@@ -63,4 +64,6 @@ public interface AnswerLocalhostMapper
     List<String> selectAnswerLocalhostList1(AnswerLocalhost answerLocalhost);
 
    public AnswerLocalhost selectAnswerLocalhostByOpenId(String openId);
+
+    List<PersonTest> selectAnswerPersonTest(String name);
 }

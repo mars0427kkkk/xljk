@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.xljk.domain.AnswerLocalhost;
+import com.ruoyi.xljk.domain.PersonTest;
 import com.ruoyi.xljk.domain.Vo.stuposiVo;
 import com.ruoyi.xljk.domain.correctionalMode;
 import com.ruoyi.xljk.domain.Vo.homeVo;
@@ -55,7 +58,71 @@ public class QuestionAnswerController extends BaseController
     private ISysFileInfoService sysFileInfoService;
     @Autowired
     private IAnswerLocalhostService answerLocalhostService;
+    @ApiOperation("结果分析")
+    @GetMapping("/persontest")
+    public AjaxResult persontest(String name){
 
+        List<PersonTest> personTests = answerLocalhostService.selectAnswerPersonTest(name);
+        List<PersonTestResult> personTestResults = new ArrayList<>();
+        for (PersonTest personTest : personTests) {
+            String answer = personTest.getAnswer();
+            List<NameTypePair> pairs = parseInput(answer);
+            List<String> parsedInfo = new ArrayList<>();
+
+            for (NameTypePair pair : pairs) {
+                parsedInfo.add("Test: "+ personTest.getTestName() +", Name: " + pair.getName() + ", Type: " + pair.getType());
+            }
+            personTestResults.add(new PersonTestResult(personTest, parsedInfo));
+        }
+        return success(personTestResults);
+    }
+    private static class PersonTestResult {
+        private PersonTest personTest;
+        private List<String> parsedInfo;
+
+        public PersonTestResult(PersonTest personTest, List<String> parsedInfo) {
+            this.personTest = personTest;
+            this.parsedInfo = parsedInfo;
+        }
+
+        public PersonTest getPersonTest() {
+            return personTest;
+        }
+
+        public List<String> getParsedInfo() {
+            return parsedInfo;
+        }
+    }
+
+    private static List<NameTypePair> parseInput(String input) {
+        List<NameTypePair> pairs = new ArrayList<>();
+        Pattern pattern = Pattern.compile("name='(.*?)', type=([0-9]+\\.?[0-9]*)");
+        Matcher matcher = pattern.matcher(input);
+        while (matcher.find()) {
+            String name = matcher.group(1);
+            double type = Double.parseDouble(matcher.group(2));
+            pairs.add(new NameTypePair(name, type));
+        }
+        return pairs;
+    }
+
+    private static class NameTypePair {
+        private final String name;
+        private final double type;
+
+        public NameTypePair(String name, double type) {
+            this.name = name;
+            this.type = type;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public double getType() {
+            return type;
+        }
+    }
     @ApiOperation("教养模式")
     @GetMapping("/home")
     public AjaxResult homelist(correctionalMode correctionalMode){

@@ -3,6 +3,7 @@ package com.ruoyi.xljk.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ruoyi.xljk.domain.PersonTest;
 import com.ruoyi.xljk.domain.QuestionAnswer;
 import com.ruoyi.xljk.mapper.QuestionAnswerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,5 +121,12 @@ public class AnswerLocalhostServiceImpl implements IAnswerLocalhostService
             list.add(questionAnswer);
         }
         return  list;
+    }
+
+    @Override
+    public List<PersonTest> selectAnswerPersonTest(String name) {
+        List<PersonTest> personTests = answerLocalhostMapper.selectAnswerPersonTest( name);
+
+        return personTests;
     }
 }
