@@ -29,6 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="answerNum != null  and answerNum != ''"> and answer_num = #{answerNum}</if>
             <if test="status != null  and status != ''"> and status = #{status}</if>
         </where>
+        ORDER BY test_time DESC
+        LIMIT 1
     </select>
     
     <select id="selectAnswerLocalhostById" parameterType="Long" resultMap="AnswerLocalhostResult">
